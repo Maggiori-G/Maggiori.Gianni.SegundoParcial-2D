@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Entidades.csproj", "{3DCAD2A2-FC85-40AB-88B1-9769627D5006}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vista", "..\Vista\Vista.csproj", "{C1ABACA5-E90B-4EA9-B0EF-8CD8379973E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestJuego", "..\TestJuego\TestJuego.csproj", "{E1F422DA-1FFC-4AFD-907E-540F8936CD93}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DCAD2A2-FC85-40AB-88B1-9769627D5006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DCAD2A2-FC85-40AB-88B1-9769627D5006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DCAD2A2-FC85-40AB-88B1-9769627D5006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DCAD2A2-FC85-40AB-88B1-9769627D5006}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1ABACA5-E90B-4EA9-B0EF-8CD8379973E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1ABACA5-E90B-4EA9-B0EF-8CD8379973E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1ABACA5-E90B-4EA9-B0EF-8CD8379973E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1ABACA5-E90B-4EA9-B0EF-8CD8379973E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1F422DA-1FFC-4AFD-907E-540F8936CD93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1F422DA-1FFC-4AFD-907E-540F8936CD93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1F422DA-1FFC-4AFD-907E-540F8936CD93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1F422DA-1FFC-4AFD-907E-540F8936CD93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90BA49A0-C5E5-43A4-AD08-30C59F6E8115}
+	EndGlobalSection
+EndGlobal
