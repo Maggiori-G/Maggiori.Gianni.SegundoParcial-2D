@@ -14,18 +14,20 @@ namespace Vista {
 		
 		Jugador? jugadorUno;
 		Jugador? jugadorDos;
-		Juego juego;
+		Partida? partida;
 
-		public FrmMesa(Partida partida) {
+		public FrmMesa(Jugador j1, Jugador j2) {
 			InitializeComponent();
-			
+			jugadorUno = j1;
+			jugadorDos = j2;
 		}
 
 		
 
 		private void FrmMesa_Load(object sender,EventArgs e) {
+			partida = new Partida(jugadorUno!, jugadorDos!);
 			grp_JugadorUno.Text+=jugadorUno!.Nombre;
-			grp_T2.Text+=jugadorDos!.Nombre;
+			grp_JugadorDos.Text+=jugadorDos!.Nombre;
 			lbl_PuntosJugadorUno.Visible=false;
 			lbl_PuntosJugadorDos.Visible=false;
 			//lbl_PuntosJugadorUno.Text=juego.ContarPuntos(juego.JugadasJugadorUno).ToString();
@@ -35,22 +37,12 @@ namespace Vista {
 
 		private void LlenarDataGridJugadas() {
 			dgw_JugadasJugadorUno.DataSource=null;
-			
+			dgw_JugadasJugadorUno.DataSource=partida!.JuegoJugadorUno.Jugadas.ToList();
 			dgw_JugadasJugadorDos.DataSource=null;
-			
+			dgw_JugadasJugadorDos.DataSource=partida!.JuegoJugadorDos.Jugadas.ToList();
 		}
 
-		private void MostrarTiradasRichTexboxJugadorUno() {
-			rtb_RegistroJugadorUno.AppendText(jugadorUno!.InformarTirada()+"\n");
-		}
-
-		private void MostrarTiradasRichTexboxJugadorUno(string jugada) {
-			rtb_RegistroJugadorUno.AppendText(jugada+"\n");
-		}
-
-		private void MostrarTiradasRichTexboxJugadorDos() {
-			rtb_RegistroJugadorDos.AppendText(jugadorDos!.InformarTirada()+"\n");
-		}
+		
 
 	}
 }

@@ -51,7 +51,7 @@
 			this.btn_ImportarJugadoresTXT = new System.Windows.Forms.Button();
 			this.btn_ImportarJugadoresXML = new System.Windows.Forms.Button();
 			this.btn_ImportarJugadoresJSON = new System.Windows.Forms.Button();
-			this.btn_MesaInformes = new System.Windows.Forms.Button();
+			this.btn_NuevoJugador = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgw_Partidas)).BeginInit();
 			this.grp_Mesas.SuspendLayout();
 			this.grp_NuevaMesa.SuspendLayout();
@@ -185,7 +185,7 @@
 			this.grp_ExportarDatos.Controls.Add(this.btn_ExportarJugadoresJSON);
 			this.grp_ExportarDatos.Location = new System.Drawing.Point(25, 112);
 			this.grp_ExportarDatos.Name = "grp_ExportarDatos";
-			this.grp_ExportarDatos.Size = new System.Drawing.Size(199, 480);
+			this.grp_ExportarDatos.Size = new System.Drawing.Size(199, 389);
 			this.grp_ExportarDatos.TabIndex = 8;
 			this.grp_ExportarDatos.TabStop = false;
 			this.grp_ExportarDatos.Text = "Exportar Datos:";
@@ -263,7 +263,7 @@
 			this.brn_Salir.Location = new System.Drawing.Point(747, 553);
 			this.brn_Salir.Name = "brn_Salir";
 			this.brn_Salir.Size = new System.Drawing.Size(114, 39);
-			this.brn_Salir.TabIndex = 21;
+			this.brn_Salir.TabIndex = 19;
 			this.brn_Salir.Text = "Salir";
 			this.brn_Salir.UseVisualStyleBackColor = false;
 			this.brn_Salir.Click += new System.EventHandler(this.brn_Salir_Click);
@@ -279,7 +279,7 @@
 			this.grp_ImportarBaseDeDatos.Controls.Add(this.btn_ImportarJugadoresJSON);
 			this.grp_ImportarBaseDeDatos.Location = new System.Drawing.Point(230, 112);
 			this.grp_ImportarBaseDeDatos.Name = "grp_ImportarBaseDeDatos";
-			this.grp_ImportarBaseDeDatos.Size = new System.Drawing.Size(277, 480);
+			this.grp_ImportarBaseDeDatos.Size = new System.Drawing.Size(277, 389);
 			this.grp_ImportarBaseDeDatos.TabIndex = 10;
 			this.grp_ImportarBaseDeDatos.TabStop = false;
 			this.grp_ImportarBaseDeDatos.Text = "Importar Datos:";
@@ -362,16 +362,17 @@
 			this.btn_ImportarJugadoresJSON.Text = "Jugadores JSON";
 			this.btn_ImportarJugadoresJSON.UseVisualStyleBackColor = false;
 			// 
-			// btn_MesaInformes
+			// btn_NuevoJugador
 			// 
-			this.btn_MesaInformes.BackColor = System.Drawing.Color.Snow;
-			this.btn_MesaInformes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btn_MesaInformes.Location = new System.Drawing.Point(513, 553);
-			this.btn_MesaInformes.Name = "btn_MesaInformes";
-			this.btn_MesaInformes.Size = new System.Drawing.Size(228, 39);
-			this.btn_MesaInformes.TabIndex = 4;
-			this.btn_MesaInformes.Text = "Mesa de Informes";
-			this.btn_MesaInformes.UseVisualStyleBackColor = false;
+			this.btn_NuevoJugador.BackColor = System.Drawing.Color.Snow;
+			this.btn_NuevoJugador.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btn_NuevoJugador.Location = new System.Drawing.Point(513, 553);
+			this.btn_NuevoJugador.Name = "btn_NuevoJugador";
+			this.btn_NuevoJugador.Size = new System.Drawing.Size(228, 39);
+			this.btn_NuevoJugador.TabIndex = 4;
+			this.btn_NuevoJugador.Text = "Nuevo Jugador";
+			this.btn_NuevoJugador.UseVisualStyleBackColor = false;
+			this.btn_NuevoJugador.Click += new System.EventHandler(this.btn_NuevoJugador_Click);
 			// 
 			// FrmPantallaPrincipal
 			// 
@@ -379,7 +380,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.LightSalmon;
 			this.ClientSize = new System.Drawing.Size(888, 736);
-			this.Controls.Add(this.btn_MesaInformes);
+			this.Controls.Add(this.btn_NuevoJugador);
 			this.Controls.Add(this.grp_ImportarBaseDeDatos);
 			this.Controls.Add(this.brn_Salir);
 			this.Controls.Add(this.grp_ExportarDatos);
@@ -395,7 +396,6 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FrmPantallaPrincipal";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPantallaPrincipal_FormClosed);
-			this.Load += new System.EventHandler(this.FrmPantallaPrincipal_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dgw_Partidas)).EndInit();
 			this.grp_Mesas.ResumeLayout(false);
 			this.grp_NuevaMesa.ResumeLayout(false);
@@ -433,9 +433,9 @@
 		private Button btn_ImportarJugadoresJSON;
 		private Button btn_ImportarJugadoresXML;
 		private Button btn_ImportarJugadoresTXT;
-		private Button btn_MesaInformes;
 		private Button btn_ImportarPartidasTXT;
 		private Button btn_ImportarPartidasXML;
 		private Button btn_ImportarPartidasJSON;
+		private Button btn_NuevoJugador;
 	}
 }

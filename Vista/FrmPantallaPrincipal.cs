@@ -23,10 +23,6 @@ namespace Vista {
 			Environment.Exit(0);
 		}
 
-		private void FrmPantallaPrincipal_Load(object sender,EventArgs e) {
-			//ActualizarJugadoresBaseDeDatos();
-		}
-
 		private void ActualizarJugadoresBaseDeDatos() {
 			cmb_PrimerJugador.DataSource=JugadorDAO.GetJugadores();
 			cmb_SegundoJugador.DataSource=JugadorDAO.GetJugadores();
@@ -38,8 +34,8 @@ namespace Vista {
 
 		private void btn_CrearMesa_Click(object sender,EventArgs e) {
 			if(!Sistema.ValidarMesaConJugadoresIguales((Jugador)cmb_PrimerJugador.SelectedItem,(Jugador)cmb_SegundoJugador.SelectedItem)){
-				//FrmMesa frmMesa = new FrmMesa((Jugador)cmb_PrimerJugador.SelectedItem, (Jugador)cmb_SegundoJugador.SelectedItem);
-				//frmMesa.Show();
+				FrmMesa frmMesa = new FrmMesa((Jugador)cmb_PrimerJugador.SelectedItem, (Jugador)cmb_SegundoJugador.SelectedItem);
+				frmMesa.Show();
 			}
 			else {
 				MessageBox.Show("No se puede crear una mesa con jugadores repetidos");
@@ -48,6 +44,11 @@ namespace Vista {
 
 		private void btm_JugadoresSQL_Click(object sender,EventArgs e) {
 			this.ActualizarJugadoresBaseDeDatos();
+		}
+
+		private void btn_NuevoJugador_Click(object sender,EventArgs e) {
+			FrmNuevoJugador nuevoJugador = new FrmNuevoJugador();
+			nuevoJugador.Show();
 		}
 	}
 }

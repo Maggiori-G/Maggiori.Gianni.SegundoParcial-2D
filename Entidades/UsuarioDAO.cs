@@ -56,7 +56,7 @@ namespace Entidades {
 		}
 
 		public static int EjecutarConParametros(string query, string nombreCompleto, string nombreUsuario, string contraseña, string email) {
-			if(string.IsNullOrEmpty(query) && !string.IsNullOrEmpty(nombreCompleto) && !string.IsNullOrEmpty(nombreUsuario) && !string.IsNullOrEmpty(contraseña) && !string.IsNullOrEmpty(email)) {
+			if(!string.IsNullOrEmpty(query) && !string.IsNullOrEmpty(nombreCompleto) && !string.IsNullOrEmpty(nombreUsuario) && !string.IsNullOrEmpty(contraseña) && !string.IsNullOrEmpty(email)) {
 				sqlConnection.Open();
 				sqlCommand.Parameters.Clear();
 				sqlCommand.CommandText = query;

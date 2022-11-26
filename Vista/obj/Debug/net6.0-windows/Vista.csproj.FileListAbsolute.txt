@@ -27,4 +27,4 @@ C:\Users\tanii\Desktop\Maggiori.Gianni.SegundoParcial-2D\Vista\obj\Debug\net6.0-
 C:\Users\tanii\Desktop\Maggiori.Gianni.SegundoParcial-2D\Vista\obj\Debug\net6.0-windows\Vista.FrmPantallaPrincipal.resources
 C:\Users\tanii\Desktop\Maggiori.Gianni.SegundoParcial-2D\Vista\obj\Debug\net6.0-windows\Vista.csproj.CopyComplete
 C:\Users\tanii\Desktop\Maggiori.Gianni.SegundoParcial-2D\Vista\obj\Debug\net6.0-windows\Vista.FrmMesa.resources
-C:\Users\tanii\Desktop\Maggiori.Gianni.SegundoParcial-2D\Vista\obj\Debug\net6.0-windows\Vista.FrmMesaDeInformes.resources
+C:\Users\tanii\Desktop\Maggiori.Gianni.SegundoParcial-2D\Vista\obj\Debug\net6.0-windows\Vista.FrmNuevoJugador.resources

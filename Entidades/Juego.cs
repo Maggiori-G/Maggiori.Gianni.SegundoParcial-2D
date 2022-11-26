@@ -8,13 +8,7 @@ namespace Entidades {
 	public class Juego{
 
 		Jugador jugador;
-		private string informeDePartida;
 		private Dictionary<string, int> jugadas;
-
-		public string InformeDePartida {
-			get => informeDePartida;
-			set => informeDePartida=value;
-		}
 
 		public Dictionary<string,int> Jugadas {
 			get => jugadas;
@@ -23,7 +17,6 @@ namespace Entidades {
 
 		public Juego(Jugador jugador) {
 			this.jugador=jugador;
-			informeDePartida=string.Empty;
 			jugadas=InicializarDiccionarioDeJugadas();
 		}
 
@@ -107,8 +100,9 @@ namespace Entidades {
 
 		public bool EsPoker() {
 			int contador=0;
+			int valor=0;
 			bool retorno=false;
-			ContarDadosIguales(ref contador);
+			contador=ContarDadosIguales(ref valor);
 			
 			if(contador == 4) {
 				retorno=true;
@@ -157,80 +151,68 @@ namespace Entidades {
 		}
 		
 		public void JugarTurno() {
-			int valorDadoMasRepetido=0;
-			int cantidadDadosRepetidos=0;
-			bool flagJugadaNoEspecial=false;
 			jugador.TirarDados();
-			if(EsGenerala() && !ValidarJugadaYaRealizada("Generala")) {
+			if(EsGenerala() && ValidarJugadaParaRealizar("Generala")) {
 				this.ActualizarDiccionarioDeJugadas("Generala", 55);
 			}
 			else {
-				if(EsPoker() && !ValidarJugadaYaRealizada("Poker")) {
+				if(EsPoker() && ValidarJugadaParaRealizar("Poker")) {
 					this.ActualizarDiccionarioDeJugadas("Poker", 45);
 				}
 				else {
-					if(EsFull() && !ValidarJugadaYaRealizada("Full")) {
+					if(EsFull() && ValidarJugadaParaRealizar("Full")) {
 						this.ActualizarDiccionarioDeJugadas("Full", 35);
 					}
 					else {
-						if(EsEscalera() && !ValidarJugadaYaRealizada("Escalera")) {
+						if(EsEscalera() && ValidarJugadaParaRealizar("Escalera")) {
 							this.ActualizarDiccionarioDeJugadas("Escalera", 25);
 						}
 						else {
-							cantidadDadosRepetidos=ContarDadosIguales(ref valorDadoMasRepetido);
-							if(!ValidarJugadaYaRealizada($"Al {valorDadoMasRepetido}")){
-								ActualizarDiccionarioDeJugadas($"Al {valorDadoMasRepetido}",cantidadDadosRepetidos*valorDadoMasRepetido);
+							int puntaje;
+							string keyJugada = BuscarJuegoNoEspecialDisponible(out puntaje);
+							if(!string.IsNullOrEmpty(keyJugada)) {
+								ActualizarDiccionarioDeJugadas(keyJugada,puntaje);
 							}
 							else {
-								foreach(KeyValuePair<string, int> item in jugadas) {
-									if(item.Key != "Poker" && item.Key != "Generala" && item.Key != "Full" && item.Key!="Escalera") {
-										if(item.Value == -1 && BuscarJugadaNoEspecialDisponible(item,1, ref valorDadoMasRepetido, ref cantidadDadosRepetidos)) {
-											ActualizarDiccionarioDeJugadas($"Al {valorDadoMasRepetido}",cantidadDadosRepetidos*valorDadoMasRepetido);
-											flagJugadaNoEspecial=true;
-											break;
-										}
-									}
-								}
-								if(!flagJugadaNoEspecial) {
-									foreach(KeyValuePair<string, int> item in jugadas) {
-										if(item.Key != "Poker" && item.Key != "Generala" && item.Key != "Full" && item.Key!="Escalera") {
-											if(item.Value == -1 && BuscarJugadaNoEspecialDisponible(item,0, ref valorDadoMasRepetido, ref cantidadDadosRepetidos)) {
-												ActualizarDiccionarioDeJugadas(item.Key,cantidadDadosRepetidos*valorDadoMasRepetido);
-												flagJugadaNoEspecial=true;
-												break;
-											}
-										}
-									}	
-								}
-								if(!flagJugadaNoEspecial) {
-									TacharJugadaNoEspecial();
-
-								}
+								TacharJugada();
 							}
 						}
 					}
 				}
 			}
 		}
-		
 
-		public bool BuscarJugadaNoEspecialDisponible(KeyValuePair<string, int> jugadas, int cantidadABuscar, ref int valorDelDado, ref int repeticiones) {
-			string[] valorBuscar=jugadas.Key.Split(" ");
-			int contador=0;			
-			for(int i = 0;i<jugador.Dados.Length;i++) {
-				if(jugador.Dados[i].ToString() == valorBuscar[1]) {
-					contador++;
-				}
+		public string BuscarJuegoNoEspecialDisponible(out int puntaje)
+        {
+            string jugadaElegida = string.Empty;
+            int contador;
+            int contadorMayorRepeticiones = 0;
+            int numeroMayor = 0;
+            int numero = 0;
+			puntaje=0;
+            foreach (string item in jugadas.Keys){
+                if (item.Contains("Al ") && jugadas[item] == -1){
+                    contador = 0;
+                    for (int i = 0; i < jugador.Dados.Length; i++){
+                        if (item.Contains(jugador.Dados[i].ToString())){
+                            contador++;
+                            numero = jugador.Dados[i];
+                        }
+                    }
+                    if (contador > contadorMayorRepeticiones || (contador == contadorMayorRepeticiones && (numero*contador) > (numeroMayor*contadorMayorRepeticiones))){
+                        contadorMayorRepeticiones = contador;
+                        jugadaElegida = item;
+                        numeroMayor = numero;
+                    }
+                }    
+            }
+			if(!string.IsNullOrEmpty(jugadaElegida)) {
+				puntaje=numeroMayor*contadorMayorRepeticiones;
 			}
-			if(contador>cantidadABuscar) {
-				valorDelDado=int.Parse(valorBuscar[1]);
-				repeticiones=contador;
-				return true;
-			}
-			return false;
-		}
+            return jugadaElegida;
+        }
 
-		public void TacharJugadaNoEspecial() {
+		public void TacharJugada() {
 			foreach(KeyValuePair<string,int> item in jugadas) {
 				if(item.Value ==-1) {
 					jugadas[item.Key] = 0;
@@ -239,9 +221,9 @@ namespace Entidades {
 			}
 		}
 
-		public bool ValidarJugadaYaRealizada(string jugada) {
+		public bool ValidarJugadaParaRealizar(string jugada) {
 			if(!string.IsNullOrEmpty(jugada)) {
-				if(jugadas[jugada]>0) {
+				if(jugadas[jugada]==-1) {
 					return true;
 				}
 			}

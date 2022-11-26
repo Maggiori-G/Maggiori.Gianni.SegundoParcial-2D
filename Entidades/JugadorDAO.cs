@@ -44,5 +44,27 @@ namespace Entidades {
 			}
 		}
 
+		public static int EscribirNuevoJugador(string nombre) {
+			string query="INSERT INTO Jugadores (nombreComppleto) VALUES (@nombreCompleto)";
+			try {
+				return EjecutarConParametros(query, nombre);
+			}
+			catch {
+				throw new Exception("Ocurrio un error al crear un nuevo jugador");
+			}
+		}
+
+		public static int EjecutarConParametros(string query, string nombreJugador) {
+			if(!string.IsNullOrEmpty(query) && !string.IsNullOrEmpty(nombreJugador)) {
+				sqlConnection.Open();
+				sqlCommand.Parameters.Clear();
+				sqlCommand.CommandText = query;
+				sqlCommand.Parameters.AddWithValue("@nombreCompleto",nombreJugador);
+				return sqlCommand.ExecuteNonQuery();
+			}
+			else {
+				return -1;
+			}
+		}
 	}
 }

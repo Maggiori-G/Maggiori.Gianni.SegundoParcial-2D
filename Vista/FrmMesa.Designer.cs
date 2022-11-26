@@ -31,7 +31,7 @@
 			this.rtb_RegistroJugadorUno = new System.Windows.Forms.RichTextBox();
 			this.grp_J1 = new System.Windows.Forms.GroupBox();
 			this.dgw_JugadasJugadorUno = new System.Windows.Forms.DataGridView();
-			this.grp_T2 = new System.Windows.Forms.GroupBox();
+			this.grp_JugadorDos = new System.Windows.Forms.GroupBox();
 			this.lbl_PuntosJugadorDos = new System.Windows.Forms.Label();
 			this.grp_J2 = new System.Windows.Forms.GroupBox();
 			this.dgw_JugadasJugadorDos = new System.Windows.Forms.DataGridView();
@@ -45,7 +45,7 @@
 			this.grp_Tiradas1.SuspendLayout();
 			this.grp_J1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgw_JugadasJugadorUno)).BeginInit();
-			this.grp_T2.SuspendLayout();
+			this.grp_JugadorDos.SuspendLayout();
 			this.grp_J2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgw_JugadasJugadorDos)).BeginInit();
 			this.grp_Tiradas2.SuspendLayout();
@@ -128,19 +128,19 @@
 			this.dgw_JugadasJugadorUno.Size = new System.Drawing.Size(135, 250);
 			this.dgw_JugadasJugadorUno.TabIndex = 0;
 			// 
-			// grp_T2
+			// grp_JugadorDos
 			// 
-			this.grp_T2.Controls.Add(this.lbl_PuntosJugadorDos);
-			this.grp_T2.Controls.Add(this.grp_J2);
-			this.grp_T2.Controls.Add(this.label1);
-			this.grp_T2.Controls.Add(this.grp_Tiradas2);
-			this.grp_T2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.grp_T2.Location = new System.Drawing.Point(644, 12);
-			this.grp_T2.Name = "grp_T2";
-			this.grp_T2.Size = new System.Drawing.Size(370, 379);
-			this.grp_T2.TabIndex = 5;
-			this.grp_T2.TabStop = false;
-			this.grp_T2.Text = "Jugador Dos:  ";
+			this.grp_JugadorDos.Controls.Add(this.lbl_PuntosJugadorDos);
+			this.grp_JugadorDos.Controls.Add(this.grp_J2);
+			this.grp_JugadorDos.Controls.Add(this.label1);
+			this.grp_JugadorDos.Controls.Add(this.grp_Tiradas2);
+			this.grp_JugadorDos.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.grp_JugadorDos.Location = new System.Drawing.Point(644, 12);
+			this.grp_JugadorDos.Name = "grp_JugadorDos";
+			this.grp_JugadorDos.Size = new System.Drawing.Size(370, 379);
+			this.grp_JugadorDos.TabIndex = 5;
+			this.grp_JugadorDos.TabStop = false;
+			this.grp_JugadorDos.Text = "Jugador Dos:  ";
 			// 
 			// lbl_PuntosJugadorDos
 			// 
@@ -244,7 +244,7 @@
 			this.Controls.Add(this.lbl_Ganador);
 			this.Controls.Add(this.lbl_QuienGano);
 			this.Controls.Add(this.lbl_Vs);
-			this.Controls.Add(this.grp_T2);
+			this.Controls.Add(this.grp_JugadorDos);
 			this.Controls.Add(this.grp_JugadorUno);
 			this.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -258,8 +258,8 @@
 			this.grp_Tiradas1.ResumeLayout(false);
 			this.grp_J1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgw_JugadasJugadorUno)).EndInit();
-			this.grp_T2.ResumeLayout(false);
-			this.grp_T2.PerformLayout();
+			this.grp_JugadorDos.ResumeLayout(false);
+			this.grp_JugadorDos.PerformLayout();
 			this.grp_J2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgw_JugadasJugadorDos)).EndInit();
 			this.grp_Tiradas2.ResumeLayout(false);
@@ -270,7 +270,7 @@
 
 		#endregion
 		private GroupBox grp_JugadorUno;
-		private GroupBox grp_T2;
+		private GroupBox grp_JugadorDos;
 		private Label lbl_Vs;
 		private GroupBox grp_Tiradas1;
 		private GroupBox grp_J1;

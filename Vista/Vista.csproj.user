@@ -7,7 +7,7 @@
     <Compile Update="FrmMesa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmMesaDeInformes.cs">
+    <Compile Update="FrmNuevoJugador.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmNuevoUsuario.cs">

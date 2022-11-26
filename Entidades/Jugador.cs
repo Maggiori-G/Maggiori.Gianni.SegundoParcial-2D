@@ -11,7 +11,7 @@ namespace Entidades {
 		private string? nombreCompleto;
 		private int cantidadVictorias;
 		private int[] dados;
-		public event Action mostrarDados;//testeo borrar despues
+		
 
 		public Jugador() {
 		
@@ -23,8 +23,6 @@ namespace Entidades {
 			this.cantidadVictorias=cantidadVictorias;
 			this.dados = new int[5];
 		}
-
-		
 
 		public int Id {
 			get => this.id;
@@ -51,8 +49,6 @@ namespace Entidades {
 			for(int i=0;i<dados.Length;i++) {
 				this.dados[i]=random.Next(1,6);
 			}
-			mostrarDados?.Invoke();
-
 		}
 
 		public override string ToString() {
