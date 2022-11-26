@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,8 +15,24 @@ namespace Vista {
 			InitializeComponent();
 		}
 
-		private void textBox4_TextChanged(object sender,EventArgs e) {
+		private void btn_Cancelar_Click(object sender,EventArgs e) {
+			this.Close();
+		}
 
+		private void btn_Registrarse_Click(object sender,EventArgs e) {
+			if(ControlVista.ValidarTextBox(this)) {
+				try {
+					if(txt_Contraseña.Text ==txt_ConfirmarContraseña.Text) {
+						UsuarioDAO.EscribirNuevoUsuario(txt_Nombre.Text.Trim(),txt_NombreUsuario.Text.Trim(),txt_Contraseña.Text.Trim(),txt_Email.Text.Trim());
+					}
+					else {
+						MessageBox.Show("Error al confirmar contraseña");
+					}
+				}
+				catch(Exception ex) {
+					MessageBox.Show(ex.Message);
+				}
+			}
 		}
 	}
 }

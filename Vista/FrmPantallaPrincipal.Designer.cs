@@ -27,8 +27,8 @@
 			this.btn_CrearMesa = new System.Windows.Forms.Button();
 			this.dgw_Partidas = new System.Windows.Forms.DataGridView();
 			this.grp_Mesas = new System.Windows.Forms.GroupBox();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.comboBox2 = new System.Windows.Forms.ComboBox();
+			this.cmb_PrimerJugador = new System.Windows.Forms.ComboBox();
+			this.cmb_SegundoJugador = new System.Windows.Forms.ComboBox();
 			this.grp_NuevaMesa = new System.Windows.Forms.GroupBox();
 			this.btn_CerrarMesa = new System.Windows.Forms.Button();
 			this.lbl_JugadorDos = new System.Windows.Forms.Label();
@@ -36,7 +36,6 @@
 			this.lbl_Titulo = new System.Windows.Forms.Label();
 			this.btn_ExportarJugadoresJSON = new System.Windows.Forms.Button();
 			this.grp_ExportarDatos = new System.Windows.Forms.GroupBox();
-			this.btn_ActualizarDBPartidas = new System.Windows.Forms.Button();
 			this.btn_ActualizarDBJugadores = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
@@ -52,7 +51,6 @@
 			this.btn_ImportarJugadoresTXT = new System.Windows.Forms.Button();
 			this.btn_ImportarJugadoresXML = new System.Windows.Forms.Button();
 			this.btn_ImportarJugadoresJSON = new System.Windows.Forms.Button();
-			this.btn_ListaDeJuegosSQL = new System.Windows.Forms.Button();
 			this.btn_MesaInformes = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgw_Partidas)).BeginInit();
 			this.grp_Mesas.SuspendLayout();
@@ -71,10 +69,12 @@
 			this.btn_CrearMesa.TabIndex = 2;
 			this.btn_CrearMesa.Text = "Crear Mesa";
 			this.btn_CrearMesa.UseVisualStyleBackColor = false;
+			this.btn_CrearMesa.Click += new System.EventHandler(this.btn_CrearMesa_Click);
 			// 
 			// dgw_Partidas
 			// 
 			this.dgw_Partidas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+			this.dgw_Partidas.BackgroundColor = System.Drawing.Color.LightSalmon;
 			this.dgw_Partidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgw_Partidas.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgw_Partidas.Location = new System.Drawing.Point(3, 27);
@@ -93,29 +93,29 @@
 			this.grp_Mesas.TabStop = false;
 			this.grp_Mesas.Text = "Mesas Disponibles";
 			// 
-			// comboBox1
+			// cmb_PrimerJugador
 			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(147, 41);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(189, 30);
-			this.comboBox1.TabIndex = 0;
+			this.cmb_PrimerJugador.FormattingEnabled = true;
+			this.cmb_PrimerJugador.Location = new System.Drawing.Point(147, 41);
+			this.cmb_PrimerJugador.Name = "cmb_PrimerJugador";
+			this.cmb_PrimerJugador.Size = new System.Drawing.Size(195, 30);
+			this.cmb_PrimerJugador.TabIndex = 0;
 			// 
-			// comboBox2
+			// cmb_SegundoJugador
 			// 
-			this.comboBox2.FormattingEnabled = true;
-			this.comboBox2.Location = new System.Drawing.Point(147, 85);
-			this.comboBox2.Name = "comboBox2";
-			this.comboBox2.Size = new System.Drawing.Size(189, 30);
-			this.comboBox2.TabIndex = 1;
+			this.cmb_SegundoJugador.FormattingEnabled = true;
+			this.cmb_SegundoJugador.Location = new System.Drawing.Point(147, 85);
+			this.cmb_SegundoJugador.Name = "cmb_SegundoJugador";
+			this.cmb_SegundoJugador.Size = new System.Drawing.Size(195, 30);
+			this.cmb_SegundoJugador.TabIndex = 1;
 			// 
 			// grp_NuevaMesa
 			// 
 			this.grp_NuevaMesa.Controls.Add(this.btn_CerrarMesa);
 			this.grp_NuevaMesa.Controls.Add(this.lbl_JugadorDos);
 			this.grp_NuevaMesa.Controls.Add(this.lbl_JugadorUno);
-			this.grp_NuevaMesa.Controls.Add(this.comboBox2);
-			this.grp_NuevaMesa.Controls.Add(this.comboBox1);
+			this.grp_NuevaMesa.Controls.Add(this.cmb_SegundoJugador);
+			this.grp_NuevaMesa.Controls.Add(this.cmb_PrimerJugador);
 			this.grp_NuevaMesa.Controls.Add(this.btn_CrearMesa);
 			this.grp_NuevaMesa.Location = new System.Drawing.Point(513, 386);
 			this.grp_NuevaMesa.Name = "grp_NuevaMesa";
@@ -130,7 +130,7 @@
 			this.btn_CerrarMesa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btn_CerrarMesa.Location = new System.Drawing.Point(174, 122);
 			this.btn_CerrarMesa.Name = "btn_CerrarMesa";
-			this.btn_CerrarMesa.Size = new System.Drawing.Size(162, 33);
+			this.btn_CerrarMesa.Size = new System.Drawing.Size(168, 33);
 			this.btn_CerrarMesa.TabIndex = 3;
 			this.btn_CerrarMesa.Text = "Cerrar Mesa";
 			this.btn_CerrarMesa.UseVisualStyleBackColor = false;
@@ -176,7 +176,6 @@
 			// 
 			// grp_ExportarDatos
 			// 
-			this.grp_ExportarDatos.Controls.Add(this.btn_ActualizarDBPartidas);
 			this.grp_ExportarDatos.Controls.Add(this.btn_ActualizarDBJugadores);
 			this.grp_ExportarDatos.Controls.Add(this.button3);
 			this.grp_ExportarDatos.Controls.Add(this.button2);
@@ -190,17 +189,6 @@
 			this.grp_ExportarDatos.TabIndex = 8;
 			this.grp_ExportarDatos.TabStop = false;
 			this.grp_ExportarDatos.Text = "Exportar Datos:";
-			// 
-			// btn_ActualizarDBPartidas
-			// 
-			this.btn_ActualizarDBPartidas.BackColor = System.Drawing.Color.Snow;
-			this.btn_ActualizarDBPartidas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btn_ActualizarDBPartidas.Location = new System.Drawing.Point(9, 380);
-			this.btn_ActualizarDBPartidas.Name = "btn_ActualizarDBPartidas";
-			this.btn_ActualizarDBPartidas.Size = new System.Drawing.Size(183, 88);
-			this.btn_ActualizarDBPartidas.TabIndex = 19;
-			this.btn_ActualizarDBPartidas.Text = "Actualizar Partidas en Base de Datos";
-			this.btn_ActualizarDBPartidas.UseVisualStyleBackColor = false;
 			// 
 			// btn_ActualizarDBJugadores
 			// 
@@ -278,6 +266,7 @@
 			this.brn_Salir.TabIndex = 21;
 			this.brn_Salir.Text = "Salir";
 			this.brn_Salir.UseVisualStyleBackColor = false;
+			this.brn_Salir.Click += new System.EventHandler(this.brn_Salir_Click);
 			// 
 			// grp_ImportarBaseDeDatos
 			// 
@@ -288,7 +277,6 @@
 			this.grp_ImportarBaseDeDatos.Controls.Add(this.btn_ImportarJugadoresTXT);
 			this.grp_ImportarBaseDeDatos.Controls.Add(this.btn_ImportarJugadoresXML);
 			this.grp_ImportarBaseDeDatos.Controls.Add(this.btn_ImportarJugadoresJSON);
-			this.grp_ImportarBaseDeDatos.Controls.Add(this.btn_ListaDeJuegosSQL);
 			this.grp_ImportarBaseDeDatos.Location = new System.Drawing.Point(230, 112);
 			this.grp_ImportarBaseDeDatos.Name = "grp_ImportarBaseDeDatos";
 			this.grp_ImportarBaseDeDatos.Size = new System.Drawing.Size(277, 480);
@@ -317,6 +305,7 @@
 			this.btm_JugadoresSQL.TabIndex = 18;
 			this.btm_JugadoresSQL.Text = "Jugadores de la Base de Datos";
 			this.btm_JugadoresSQL.UseVisualStyleBackColor = false;
+			this.btm_JugadoresSQL.Click += new System.EventHandler(this.btm_JugadoresSQL_Click);
 			// 
 			// btn_ImportarPartidasXML
 			// 
@@ -373,17 +362,6 @@
 			this.btn_ImportarJugadoresJSON.Text = "Jugadores JSON";
 			this.btn_ImportarJugadoresJSON.UseVisualStyleBackColor = false;
 			// 
-			// btn_ListaDeJuegosSQL
-			// 
-			this.btn_ListaDeJuegosSQL.BackColor = System.Drawing.Color.Snow;
-			this.btn_ListaDeJuegosSQL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btn_ListaDeJuegosSQL.Location = new System.Drawing.Point(6, 380);
-			this.btn_ListaDeJuegosSQL.Name = "btn_ListaDeJuegosSQL";
-			this.btn_ListaDeJuegosSQL.Size = new System.Drawing.Size(265, 86);
-			this.btn_ListaDeJuegosSQL.TabIndex = 20;
-			this.btn_ListaDeJuegosSQL.Text = "Registro de Partidas de Base de Datos";
-			this.btn_ListaDeJuegosSQL.UseVisualStyleBackColor = false;
-			// 
 			// btn_MesaInformes
 			// 
 			this.btn_MesaInformes.BackColor = System.Drawing.Color.Snow;
@@ -416,6 +394,8 @@
 			this.Name = "FrmPantallaPrincipal";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FrmPantallaPrincipal";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPantallaPrincipal_FormClosed);
+			this.Load += new System.EventHandler(this.FrmPantallaPrincipal_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dgw_Partidas)).EndInit();
 			this.grp_Mesas.ResumeLayout(false);
 			this.grp_NuevaMesa.ResumeLayout(false);
@@ -432,8 +412,8 @@
 		private Button btn_CrearMesa;
 		private DataGridView dgw_Partidas;
 		private GroupBox grp_Mesas;
-		private ComboBox comboBox1;
-		private ComboBox comboBox2;
+		private ComboBox cmb_PrimerJugador;
+		private ComboBox cmb_SegundoJugador;
 		private GroupBox grp_NuevaMesa;
 		private Button btn_CerrarMesa;
 		private Label lbl_JugadorDos;
@@ -450,8 +430,6 @@
 		private Button brn_Salir;
 		private GroupBox grp_ImportarBaseDeDatos;
 		private Button btm_JugadoresSQL;
-		private Button btn_ActualizarDBPartidas;
-		private Button btn_ListaDeJuegosSQL;
 		private Button btn_ImportarJugadoresJSON;
 		private Button btn_ImportarJugadoresXML;
 		private Button btn_ImportarJugadoresTXT;

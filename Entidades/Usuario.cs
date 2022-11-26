@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 namespace Entidades {
 	public class Usuario {
 		private int id;
-		private string nombreCompleto;
-		private string nombreUsuario;
-		private string contraseña;
-		private string email;
+		private string? nombreCompleto;
+		private string? nombreUsuario;
+		private string? contraseña;
+		private string? email;
+
+		public Usuario() {}
 
 		public Usuario(int id,string nombreCompleto,string nombreUsuario,string contraseña,string email) {
 			this.id=id;
@@ -24,18 +26,20 @@ namespace Entidades {
 			get => id;
 		}
 		public string NombreCompleto {
-			get => nombreCompleto;
+			get => nombreCompleto!;
+			set => this.nombreCompleto = value;
 		}
 		public string NombreUsuario {
-			get => nombreUsuario;
+			get => nombreUsuario!;
 			set => nombreUsuario=value;
 		}
 		public string Contraseña {
-			get => contraseña;
+			get => contraseña!;
 			set => contraseña=value;
 		}
 		public string Email {
-			get => email;
+			get => email!;
+			set => email=value;
 		}
 
 		

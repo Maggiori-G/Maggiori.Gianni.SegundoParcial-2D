@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Vista {
 	public static class ControlVista {
 
-		internal static bool ValidarTextBox(Form form) {
+		public static bool ValidarTextBox(Form form) {
 			foreach(Control	control in form.Controls) {
 				if(control is TextBox && string.IsNullOrEmpty(control.Text)) {
 					return false;
@@ -15,5 +15,7 @@ namespace Vista {
 			}
 			return true;
 		}
+
+		
 	}
 }

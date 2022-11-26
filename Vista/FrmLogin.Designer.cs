@@ -161,6 +161,7 @@
 			this.RightToLeftLayout = true;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Login - La Generala Fruta";
+			this.Load += new System.EventHandler(this.FrmLogin_Load);
 			this.grb_IngresarDatos.ResumeLayout(false);
 			this.grb_IngresarDatos.PerformLayout();
 			this.ResumeLayout(false);

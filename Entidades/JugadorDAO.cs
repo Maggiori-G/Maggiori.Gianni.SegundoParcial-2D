@@ -25,7 +25,12 @@ namespace Entidades {
 				sqlCommand.CommandText=query;
 				SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 				while(sqlDataReader.Read()) {
-					list.Add(new Jugador(sqlDataReader.GetInt32(0), sqlDataReader.GetString(1), sqlDataReader.GetInt32(2)));
+					if(!sqlDataReader.IsDBNull(1)) {
+						list.Add(new Jugador(sqlDataReader.GetInt32(0), sqlDataReader.GetString(1), sqlDataReader.GetInt32(2)));
+					}
+					else {
+						throw new Exception("Error en la base de datos");
+					}
 				}
 				return list;
 			}
@@ -33,7 +38,9 @@ namespace Entidades {
 				throw new Exception("No se pudo leer de la base de datos");
 			}
 			finally {
-				sqlConnection.Close();
+				if(sqlCommand is not null && sqlConnection.State == System.Data.ConnectionState.Open) {
+					sqlConnection.Close();
+				}
 			}
 		}
 

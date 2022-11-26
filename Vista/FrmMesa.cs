@@ -11,18 +11,46 @@ using System.Windows.Forms;
 
 namespace Vista {
 	public partial class FrmMesa:Form {
+		
 		Jugador? jugadorUno;
 		Jugador? jugadorDos;
-		public FrmMesa(Jugador j1, Jugador j2) {
+		Juego juego;
+
+		public FrmMesa(Partida partida) {
 			InitializeComponent();
-			jugadorUno = j1;
-			jugadorDos = j2;
-			grp_JugadorUno.Text+=jugadorUno.Nombre;
-			grp_T2.Text+=jugadorDos.Nombre;
-			lbl_PuntosJugadorUno.Visible=false;
-			lbl_PuntosJugadorDos.Visible=false;
+			
 		}
 
 		
+
+		private void FrmMesa_Load(object sender,EventArgs e) {
+			grp_JugadorUno.Text+=jugadorUno!.Nombre;
+			grp_T2.Text+=jugadorDos!.Nombre;
+			lbl_PuntosJugadorUno.Visible=false;
+			lbl_PuntosJugadorDos.Visible=false;
+			//lbl_PuntosJugadorUno.Text=juego.ContarPuntos(juego.JugadasJugadorUno).ToString();
+			//lbl_PuntosJugadorDos.Text=juego.ContarPuntos(juego.JugadasJugadorDos).ToString();
+			LlenarDataGridJugadas();
+		}
+
+		private void LlenarDataGridJugadas() {
+			dgw_JugadasJugadorUno.DataSource=null;
+			
+			dgw_JugadasJugadorDos.DataSource=null;
+			
+		}
+
+		private void MostrarTiradasRichTexboxJugadorUno() {
+			rtb_RegistroJugadorUno.AppendText(jugadorUno!.InformarTirada()+"\n");
+		}
+
+		private void MostrarTiradasRichTexboxJugadorUno(string jugada) {
+			rtb_RegistroJugadorUno.AppendText(jugada+"\n");
+		}
+
+		private void MostrarTiradasRichTexboxJugadorDos() {
+			rtb_RegistroJugadorDos.AppendText(jugadorDos!.InformarTirada()+"\n");
+		}
+
 	}
 }

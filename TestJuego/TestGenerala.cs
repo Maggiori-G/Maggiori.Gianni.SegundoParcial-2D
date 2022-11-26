@@ -10,34 +10,34 @@ namespace TestJuego {
 			List<Jugador> lista = new List<Jugador>();
 
 			lista=JugadorDAO.GetJugadores();
-
-			//Console.WriteLine(lista.Count);
 			Assert.IsTrue(lista.Count>0);
 
 		}
 		
-		
 		[TestMethod]
-		public void TestearDadosIguales() {
-			Jugador jugador1=new Jugador(0, "Eze Tabo", 20);
-			Jugador jugador2=new Jugador(0, "Gianni Maggiori", 20);
-			Juego juegoNuevo = new Juego(jugador1,jugador2);
-			int contadorDeDados=0;
-			int posicionDelDadoRepetido=0;
-			
-			jugador1.TirarDados();
-			for(int i = 0;i<5;i++) {
-				Console.WriteLine(jugador1.Dados[i]);
+		public void TestearArmarJuego() {
+			Jugador jugador = new Jugador(1,"gianni",0);
+			Juego juego = new Juego(jugador);
+
+			while(juego.ChequearSiHayJugadasDisponibles()) {
+				juego.JugarTurno();
+				foreach(KeyValuePair<string,int> item in juego.Jugadas) {
+					Console.WriteLine(item);
+				}
 			}
-
-			contadorDeDados=juegoNuevo.ContarDadosIguales(jugador1, out posicionDelDadoRepetido);
-
-			Console.WriteLine($"numero repetido: {jugador1.Dados[posicionDelDadoRepetido]}, Cantidad: {contadorDeDados}");
-
-			Assert.IsTrue(true);
+			Assert.IsTrue(!juego.ChequearSiHayJugadasDisponibles());
 		}
-		
-		
 
+		[TestMethod]
+		public void TestearSiEsEscalera() {
+			Jugador jugador = new Jugador(1,"gianni",0);
+			Juego juego = new Juego(jugador);
+			int[] dados = {1,5,4,2,3};
+			int[] dadosDos = {6,2,3,4,5};
+
+			jugador.Dados=dados;
+
+			Assert.IsTrue(juego.EsEscalera());
+		}
 	}
 }

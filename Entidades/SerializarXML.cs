@@ -20,11 +20,16 @@ namespace Entidades {
 				if(!Directory.Exists(ruta)) {
 					Directory.CreateDirectory(ruta);
 				}
-				using(StreamWriter sw = new StreamWriter(rutaCompleta)) {
-					XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
-					xmlSerializer.Serialize(sw, dato);
+				try {
+					using(StreamWriter sw = new StreamWriter(rutaCompleta)) {
+						XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+						xmlSerializer.Serialize(sw, dato);
+						return true;
+					}
 				}
-				return true;
+				catch {
+					throw new Exception("Error al escribir el archivo");
+				}
 			}
 			else {
 				throw new Exception("Error al serializar el archivo");
@@ -39,9 +44,14 @@ namespace Entidades {
 				if(!Directory.Exists(ruta)) {
 					Directory.CreateDirectory(ruta);
 				}
-				using(StreamReader sw = new StreamReader(rutaCompleta)) {
-					XmlSerializer xmlSerializer=new XmlSerializer(typeof(T));
-					datos = (T?)xmlSerializer.Deserialize(sw);
+				try {
+					using(StreamReader sw = new StreamReader(rutaCompleta)) {
+						XmlSerializer xmlSerializer=new XmlSerializer(typeof(T));
+						datos = (T?)xmlSerializer.Deserialize(sw);
+					}
+				}
+				catch {
+					throw new Exception("Error al leer el archivo");
 				}
 			}
 			else {

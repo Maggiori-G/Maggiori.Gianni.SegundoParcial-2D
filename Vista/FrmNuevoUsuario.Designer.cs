@@ -28,13 +28,13 @@
 			this.btn_Cancelar = new System.Windows.Forms.Button();
 			this.btn_Registrarse = new System.Windows.Forms.Button();
 			this.lbl_Email = new System.Windows.Forms.Label();
-			this.textBox5 = new System.Windows.Forms.TextBox();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.txt_Email = new System.Windows.Forms.TextBox();
+			this.txt_NombreUsuario = new System.Windows.Forms.TextBox();
 			this.lbl_ConfirmarContraseña = new System.Windows.Forms.Label();
-			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.txt_Contraseña = new System.Windows.Forms.TextBox();
 			this.lbl_Contraseña = new System.Windows.Forms.Label();
-			this.textBox3 = new System.Windows.Forms.TextBox();
-			this.textBox4 = new System.Windows.Forms.TextBox();
+			this.txt_Nombre = new System.Windows.Forms.TextBox();
+			this.txt_ConfirmarContraseña = new System.Windows.Forms.TextBox();
 			this.lbl_NombreUsuario = new System.Windows.Forms.Label();
 			this.lbl_Nombre = new System.Windows.Forms.Label();
 			this.lbl_Titulo = new System.Windows.Forms.Label();
@@ -46,13 +46,13 @@
 			this.grp_Datos.Controls.Add(this.btn_Cancelar);
 			this.grp_Datos.Controls.Add(this.btn_Registrarse);
 			this.grp_Datos.Controls.Add(this.lbl_Email);
-			this.grp_Datos.Controls.Add(this.textBox5);
-			this.grp_Datos.Controls.Add(this.textBox1);
+			this.grp_Datos.Controls.Add(this.txt_Email);
+			this.grp_Datos.Controls.Add(this.txt_NombreUsuario);
 			this.grp_Datos.Controls.Add(this.lbl_ConfirmarContraseña);
-			this.grp_Datos.Controls.Add(this.textBox2);
+			this.grp_Datos.Controls.Add(this.txt_Contraseña);
 			this.grp_Datos.Controls.Add(this.lbl_Contraseña);
-			this.grp_Datos.Controls.Add(this.textBox3);
-			this.grp_Datos.Controls.Add(this.textBox4);
+			this.grp_Datos.Controls.Add(this.txt_Nombre);
+			this.grp_Datos.Controls.Add(this.txt_ConfirmarContraseña);
 			this.grp_Datos.Controls.Add(this.lbl_NombreUsuario);
 			this.grp_Datos.Controls.Add(this.lbl_Nombre);
 			this.grp_Datos.Location = new System.Drawing.Point(12, 86);
@@ -73,6 +73,7 @@
 			this.btn_Cancelar.TabIndex = 9;
 			this.btn_Cancelar.Text = "Cancelar";
 			this.btn_Cancelar.UseVisualStyleBackColor = false;
+			this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
 			// 
 			// btn_Registrarse
 			// 
@@ -85,6 +86,7 @@
 			this.btn_Registrarse.TabIndex = 8;
 			this.btn_Registrarse.Text = "Registrarme!";
 			this.btn_Registrarse.UseVisualStyleBackColor = false;
+			this.btn_Registrarse.Click += new System.EventHandler(this.btn_Registrarse_Click);
 			// 
 			// lbl_Email
 			// 
@@ -95,19 +97,19 @@
 			this.lbl_Email.TabIndex = 7;
 			this.lbl_Email.Text = "Email";
 			// 
-			// textBox5
+			// txt_Email
 			// 
-			this.textBox5.Location = new System.Drawing.Point(255, 201);
-			this.textBox5.Name = "textBox5";
-			this.textBox5.Size = new System.Drawing.Size(185, 30);
-			this.textBox5.TabIndex = 4;
+			this.txt_Email.Location = new System.Drawing.Point(255, 201);
+			this.txt_Email.Name = "txt_Email";
+			this.txt_Email.Size = new System.Drawing.Size(185, 30);
+			this.txt_Email.TabIndex = 4;
 			// 
-			// textBox1
+			// txt_NombreUsuario
 			// 
-			this.textBox1.Location = new System.Drawing.Point(255, 92);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(185, 30);
-			this.textBox1.TabIndex = 1;
+			this.txt_NombreUsuario.Location = new System.Drawing.Point(255, 92);
+			this.txt_NombreUsuario.Name = "txt_NombreUsuario";
+			this.txt_NombreUsuario.Size = new System.Drawing.Size(185, 30);
+			this.txt_NombreUsuario.TabIndex = 1;
 			// 
 			// lbl_ConfirmarContraseña
 			// 
@@ -118,13 +120,13 @@
 			this.lbl_ConfirmarContraseña.TabIndex = 2;
 			this.lbl_ConfirmarContraseña.Text = "Confirmar Contraseña";
 			// 
-			// textBox2
+			// txt_Contraseña
 			// 
-			this.textBox2.Location = new System.Drawing.Point(255, 128);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.PasswordChar = '*';
-			this.textBox2.Size = new System.Drawing.Size(185, 30);
-			this.textBox2.TabIndex = 2;
+			this.txt_Contraseña.Location = new System.Drawing.Point(255, 128);
+			this.txt_Contraseña.Name = "txt_Contraseña";
+			this.txt_Contraseña.PasswordChar = '*';
+			this.txt_Contraseña.Size = new System.Drawing.Size(185, 30);
+			this.txt_Contraseña.TabIndex = 2;
 			// 
 			// lbl_Contraseña
 			// 
@@ -135,21 +137,20 @@
 			this.lbl_Contraseña.TabIndex = 2;
 			this.lbl_Contraseña.Text = "Contraseña";
 			// 
-			// textBox3
+			// txt_Nombre
 			// 
-			this.textBox3.Location = new System.Drawing.Point(255, 56);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(185, 30);
-			this.textBox3.TabIndex = 0;
+			this.txt_Nombre.Location = new System.Drawing.Point(255, 56);
+			this.txt_Nombre.Name = "txt_Nombre";
+			this.txt_Nombre.Size = new System.Drawing.Size(185, 30);
+			this.txt_Nombre.TabIndex = 0;
 			// 
-			// textBox4
+			// txt_ConfirmarContraseña
 			// 
-			this.textBox4.Location = new System.Drawing.Point(255, 164);
-			this.textBox4.Name = "textBox4";
-			this.textBox4.PasswordChar = '*';
-			this.textBox4.Size = new System.Drawing.Size(185, 30);
-			this.textBox4.TabIndex = 3;
-			this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+			this.txt_ConfirmarContraseña.Location = new System.Drawing.Point(255, 164);
+			this.txt_ConfirmarContraseña.Name = "txt_ConfirmarContraseña";
+			this.txt_ConfirmarContraseña.PasswordChar = '*';
+			this.txt_ConfirmarContraseña.Size = new System.Drawing.Size(185, 30);
+			this.txt_ConfirmarContraseña.TabIndex = 3;
 			// 
 			// lbl_NombreUsuario
 			// 
@@ -209,12 +210,12 @@
 		private Label lbl_Nombre;
 		private Label lbl_ConfirmarContraseña;
 		private Label lbl_Contraseña;
-		private TextBox textBox1;
-		private TextBox textBox2;
-		private TextBox textBox3;
-		private TextBox textBox4;
+		private TextBox txt_NombreUsuario;
+		private TextBox txt_Contraseña;
+		private TextBox txt_Nombre;
+		private TextBox txt_ConfirmarContraseña;
 		private Label lbl_Email;
-		private TextBox textBox5;
+		private TextBox txt_Email;
 		private Button btn_Cancelar;
 		private Button btn_Registrarse;
 		private Label lbl_Titulo;
