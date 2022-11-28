@@ -37,6 +37,7 @@ namespace Vista {
 			partida.JuegoJugadorUno.ActualizarTablaJugadas+=ActualizarTablaJugadorUno;
 			partida.JuegoJugadorDos.ActualizarTablaJugadas+=ActualizarTablaJugadorDos;
 			partida.InformarGanador();
+			
 		}
 
 		private void LlenarDataGridJugadas() {
@@ -81,6 +82,7 @@ namespace Vista {
 				rtb_RegistroJugadorDos.Text+=$"{tirada}\n";
 			}
 		}
+
 		private void ActualizarTablaJugadorUno(List<KeyValuePair<string,int>> tablaJugadas) {
 			if(dgw_JugadasJugadorUno.InvokeRequired) {
 				dgw_JugadasJugadorUno.Invoke(new Action <List<KeyValuePair<string,int>>>(ActualizarTablaJugadorUno),tablaJugadas);

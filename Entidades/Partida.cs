@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entidades;
 
 namespace Entidades {
 	public class Partida {
@@ -10,15 +11,13 @@ namespace Entidades {
 		Juego juegoJugadorUno;
 		Juego juegoJugadorDos;
 		private bool partidaFinalizada;
-		private string informePartida;
 		public Action<string> ganador;
-
+		private string registro;
 
 		public Partida(Jugador jugadorUno,Jugador jugadorDos) {
 			juegoJugadorUno= new Juego(jugadorUno);
 			juegoJugadorDos= new Juego(jugadorDos);
-			partidaFinalizada=false;
-			informePartida=string.Empty;
+			this.registro=Sistema.GenerarCodigoAlfanumericoRandom();
 		}
 		
 		public Partida(Jugador jugadorUno,Jugador jugadorDos, Action<string> ganador):this(jugadorUno,jugadorDos) {
@@ -30,13 +29,13 @@ namespace Entidades {
 			set => juegoJugadorUno=value;
 		}
 
-		public string PrimerJugador {
+		public string Primer_Jugador {
 			get {
 				return juegoJugadorUno.Jugador.ToString();
 			}
 		}
 		
-		public string SegundoJugador {
+		public string Segundo_Jugador {
 			get {
 				return juegoJugadorDos.Jugador.ToString();
 			}
@@ -52,9 +51,9 @@ namespace Entidades {
 			set => partidaFinalizada=value;
 		}
 
-		public string InformePartida {
-			get => informePartida;
-			set => informePartida=value;
+		public string Registro {
+			get => registro;
+			set => registro=value;
 		}
 
 		public void BuscarGanador() {
@@ -71,6 +70,7 @@ namespace Entidades {
 						nombreJugadorGanador = juegoJugadorDos.Jugador.ToString();
 					}
 					ganador?.Invoke(nombreJugadorGanador);
+					Archivo.EscribirArchivo(this.InformacionCompletaDeLaPartida(),"Registro de la partida "+this.Registro);
 					break;
 				}
 			}
@@ -78,6 +78,15 @@ namespace Entidades {
 
 		public void InformarGanador() {
 			Task task= Task.Run(BuscarGanador);
+		}
+
+		public string InformacionCompletaDeLaPartida() {
+			StringBuilder sb = new StringBuilder();
+			sb.AppendLine($"Registro de la partida: {this.registro}");
+			sb.AppendLine(juegoJugadorUno.MostrarInformacionJuego());
+			sb.AppendLine(juegoJugadorDos.MostrarInformacionJuego());
+			
+			return sb.ToString();
 		}
 	}
 }

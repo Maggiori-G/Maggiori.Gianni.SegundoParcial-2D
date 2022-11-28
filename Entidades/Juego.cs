@@ -262,7 +262,7 @@ namespace Entidades {
 
 		public void JugarPartida() {
 			while(ChequearSiHayJugadasDisponibles()) {
-				Thread.Sleep(5000);
+				Thread.Sleep(500);
 				JugarTurno();
 				InformePartida?.Invoke(this.jugador.InformarTirada());
 				InformeActualizarPuntos?.Invoke(ContarPuntos());
@@ -272,6 +272,17 @@ namespace Entidades {
 
 		public void EmpezarPartida() {
 			Task jugarPartida=Task.Run(JugarPartida);
+		}
+
+		public string MostrarInformacionJuego() {
+			StringBuilder sb = new StringBuilder();
+			sb.AppendLine(jugador.MostrarInformacionJugador());
+			sb.AppendLine($"Tabla del juego realizado:");
+			foreach(KeyValuePair<string,int> item in jugadas) {
+				sb.AppendLine($"{item.ToString()}");
+			}
+			sb.AppendLine($"Y termino la partida con: {ContarPuntos()}");
+			return sb.ToString();
 		}
 	}
 }

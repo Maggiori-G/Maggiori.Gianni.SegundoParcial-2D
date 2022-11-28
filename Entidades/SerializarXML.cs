@@ -11,7 +11,7 @@ namespace Entidades {
 		static string ruta;
 		static SerializarXML() {
 			ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-			ruta+=@"/Archivos-Serializacion";
+			ruta+=@"/Archivos";
 		}
 		
 		public bool Serializar(T dato, string archivo) {

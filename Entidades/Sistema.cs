@@ -49,5 +49,16 @@ namespace Entidades {
 			}
 			return false;
 		}
+
+		public static string GenerarCodigoAlfanumericoRandom() {
+			string caracteresPermitidos = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789";
+            Char[] codigo = new char[12];
+            Random random = new Random();
+            for (int i = 0; i < codigo.Length; i++){
+                codigo[i] = caracteresPermitidos[random.Next(caracteresPermitidos.Length)];
+            }
+            string stringRetorno = new String(codigo);
+			return stringRetorno;
+		}
 	}
 }

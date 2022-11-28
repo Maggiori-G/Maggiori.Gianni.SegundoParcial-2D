@@ -18,6 +18,7 @@ namespace Vista {
 		private void btn_Aceptar_Click(object sender,EventArgs e) {
 			try {
 				JugadorDAO.EscribirNuevoJugador(txt_NuevoJugador.Text.Trim());
+				Sistema.ListaJugadores.Add(new Jugador(Sistema.ListaJugadores.Count+1,txt_NuevoJugador.Text.Trim(),0));
 			}
 			catch (Exception ex) {
 				MessageBox.Show(ex.Message);

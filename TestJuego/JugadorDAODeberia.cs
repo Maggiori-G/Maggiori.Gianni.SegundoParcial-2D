@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TestJuego {
-	public  class JugadoresDAODeberia {
+	public  class JugadorDAODeberia {
 
 		[TestMethod]
 		public void TestearBaseDeDatosJugadoresCargadaConExito() {

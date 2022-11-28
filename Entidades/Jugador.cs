@@ -76,6 +76,13 @@ namespace Entidades {
 			return !(j1==j2);
 		}
 
+		public string MostrarInformacionJugador() {
+			StringBuilder sb = new StringBuilder();
+			sb.AppendLine($"El jugador: {this.nombreCompleto}");
+			sb.AppendLine($"Con ID: {this.id}");
+			sb.AppendLine($"Tiene un total de partidas ganadas de: {this.cantidadVictorias}");
+			return sb.ToString();
+		}
 		
 	}
 }

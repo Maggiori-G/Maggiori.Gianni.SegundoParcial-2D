@@ -24,6 +24,7 @@ namespace Vista {
 				try {
 					if(txt_Contraseña.Text ==txt_ConfirmarContraseña.Text) {
 						UsuarioDAO.EscribirNuevoUsuario(txt_Nombre.Text.Trim(),txt_NombreUsuario.Text.Trim(),txt_Contraseña.Text.Trim(),txt_Email.Text.Trim());
+						this.DialogResult=DialogResult.OK;
 					}
 					else {
 						MessageBox.Show("Error al confirmar contraseña");

@@ -46,7 +46,7 @@ namespace Entidades {
 		}
 		
 		public static int EscribirNuevoUsuario(string nombreCompleto, string nombreUsuario, string contraseña, string email) {
-			string query="INSERT INTO Usuarios (nombreCompleto,nombreUsuario,contraseña,email) VALUES (@nombreCompleto,@nombreUsuario,@contraseña,@email)";
+			string query="INSERT INTO Usuarios VALUES (@nombreCompleto,@nombreUsuario,@contraseña,@email)";
 			try {
 				return EjecutarConParametros(query,nombreCompleto,nombreUsuario,contraseña,email);
 			}

@@ -30,6 +30,7 @@
 			this.cmb_PrimerJugador = new System.Windows.Forms.ComboBox();
 			this.cmb_SegundoJugador = new System.Windows.Forms.ComboBox();
 			this.grp_NuevaMesa = new System.Windows.Forms.GroupBox();
+			this.btn_NuevoJugador = new System.Windows.Forms.Button();
 			this.btn_CerrarMesa = new System.Windows.Forms.Button();
 			this.lbl_JugadorDos = new System.Windows.Forms.Label();
 			this.lbl_JugadorUno = new System.Windows.Forms.Label();
@@ -37,18 +38,12 @@
 			this.btn_ExportarJugadoresJSON = new System.Windows.Forms.Button();
 			this.grp_ExportarDatos = new System.Windows.Forms.GroupBox();
 			this.button3 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.btn_ExportarPartidasJSON = new System.Windows.Forms.Button();
-			this.btn_ExportarJugadoresTXT = new System.Windows.Forms.Button();
 			this.btn_ExportarJugadoresXML = new System.Windows.Forms.Button();
 			this.brn_Salir = new System.Windows.Forms.Button();
 			this.grp_ImportarBaseDeDatos = new System.Windows.Forms.GroupBox();
 			this.btm_JugadoresSQL = new System.Windows.Forms.Button();
-			this.btn_ImportarPartidasXML = new System.Windows.Forms.Button();
-			this.btn_ImportarPartidasJSON = new System.Windows.Forms.Button();
 			this.btn_ImportarJugadoresXML = new System.Windows.Forms.Button();
 			this.btn_ImportarJugadoresJSON = new System.Windows.Forms.Button();
-			this.btn_NuevoJugador = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgw_Partidas)).BeginInit();
 			this.grp_Mesas.SuspendLayout();
 			this.grp_NuevaMesa.SuspendLayout();
@@ -74,23 +69,23 @@
 			this.dgw_Partidas.BackgroundColor = System.Drawing.Color.LightSalmon;
 			this.dgw_Partidas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
 			this.dgw_Partidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgw_Partidas.ColumnHeadersVisible = false;
 			this.dgw_Partidas.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgw_Partidas.Location = new System.Drawing.Point(3, 27);
 			this.dgw_Partidas.Name = "dgw_Partidas";
+			this.dgw_Partidas.RowHeadersVisible = false;
 			this.dgw_Partidas.RowTemplate.Height = 25;
-			this.dgw_Partidas.Size = new System.Drawing.Size(377, 167);
+			this.dgw_Partidas.Size = new System.Drawing.Size(513, 184);
 			this.dgw_Partidas.TabIndex = 1;
 			// 
 			// grp_Mesas
 			// 
 			this.grp_Mesas.Controls.Add(this.dgw_Partidas);
-			this.grp_Mesas.Location = new System.Drawing.Point(478, 112);
+			this.grp_Mesas.Location = new System.Drawing.Point(366, 112);
 			this.grp_Mesas.Name = "grp_Mesas";
-			this.grp_Mesas.Size = new System.Drawing.Size(383, 197);
+			this.grp_Mesas.Size = new System.Drawing.Size(519, 214);
 			this.grp_Mesas.TabIndex = 2;
 			this.grp_Mesas.TabStop = false;
-			this.grp_Mesas.Text = "Mesas Disponibles";
+			this.grp_Mesas.Text = "Mesas Activas";
 			// 
 			// cmb_PrimerJugador
 			// 
@@ -110,18 +105,31 @@
 			// 
 			// grp_NuevaMesa
 			// 
+			this.grp_NuevaMesa.Controls.Add(this.btn_NuevoJugador);
 			this.grp_NuevaMesa.Controls.Add(this.btn_CerrarMesa);
 			this.grp_NuevaMesa.Controls.Add(this.lbl_JugadorDos);
 			this.grp_NuevaMesa.Controls.Add(this.lbl_JugadorUno);
 			this.grp_NuevaMesa.Controls.Add(this.cmb_SegundoJugador);
 			this.grp_NuevaMesa.Controls.Add(this.cmb_PrimerJugador);
 			this.grp_NuevaMesa.Controls.Add(this.btn_CrearMesa);
-			this.grp_NuevaMesa.Location = new System.Drawing.Point(513, 386);
+			this.grp_NuevaMesa.Location = new System.Drawing.Point(12, 112);
 			this.grp_NuevaMesa.Name = "grp_NuevaMesa";
-			this.grp_NuevaMesa.Size = new System.Drawing.Size(348, 161);
+			this.grp_NuevaMesa.Size = new System.Drawing.Size(348, 214);
 			this.grp_NuevaMesa.TabIndex = 5;
 			this.grp_NuevaMesa.TabStop = false;
 			this.grp_NuevaMesa.Text = "Crear Mesa de Juego";
+			// 
+			// btn_NuevoJugador
+			// 
+			this.btn_NuevoJugador.BackColor = System.Drawing.Color.Snow;
+			this.btn_NuevoJugador.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btn_NuevoJugador.Location = new System.Drawing.Point(6, 161);
+			this.btn_NuevoJugador.Name = "btn_NuevoJugador";
+			this.btn_NuevoJugador.Size = new System.Drawing.Size(336, 39);
+			this.btn_NuevoJugador.TabIndex = 4;
+			this.btn_NuevoJugador.Text = "Nuevo Jugador";
+			this.btn_NuevoJugador.UseVisualStyleBackColor = false;
+			this.btn_NuevoJugador.Click += new System.EventHandler(this.btn_NuevoJugador_Click);
 			// 
 			// btn_CerrarMesa
 			// 
@@ -164,7 +172,7 @@
 			// 
 			// btn_ExportarJugadoresJSON
 			// 
-			this.btn_ExportarJugadoresJSON.BackColor = System.Drawing.Color.Snow;
+			this.btn_ExportarJugadoresJSON.BackColor = System.Drawing.Color.RosyBrown;
 			this.btn_ExportarJugadoresJSON.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btn_ExportarJugadoresJSON.Location = new System.Drawing.Point(9, 40);
 			this.btn_ExportarJugadoresJSON.Name = "btn_ExportarJugadoresJSON";
@@ -177,14 +185,11 @@
 			// grp_ExportarDatos
 			// 
 			this.grp_ExportarDatos.Controls.Add(this.button3);
-			this.grp_ExportarDatos.Controls.Add(this.button2);
-			this.grp_ExportarDatos.Controls.Add(this.btn_ExportarPartidasJSON);
-			this.grp_ExportarDatos.Controls.Add(this.btn_ExportarJugadoresTXT);
 			this.grp_ExportarDatos.Controls.Add(this.btn_ExportarJugadoresXML);
 			this.grp_ExportarDatos.Controls.Add(this.btn_ExportarJugadoresJSON);
-			this.grp_ExportarDatos.Location = new System.Drawing.Point(25, 349);
+			this.grp_ExportarDatos.Location = new System.Drawing.Point(12, 332);
 			this.grp_ExportarDatos.Name = "grp_ExportarDatos";
-			this.grp_ExportarDatos.Size = new System.Drawing.Size(199, 389);
+			this.grp_ExportarDatos.Size = new System.Drawing.Size(199, 238);
 			this.grp_ExportarDatos.TabIndex = 8;
 			this.grp_ExportarDatos.TabStop = false;
 			this.grp_ExportarDatos.Text = "Exportar Datos:";
@@ -193,49 +198,17 @@
 			// 
 			this.button3.BackColor = System.Drawing.Color.Snow;
 			this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.button3.Location = new System.Drawing.Point(9, 245);
+			this.button3.Location = new System.Drawing.Point(9, 122);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(183, 35);
 			this.button3.TabIndex = 15;
 			this.button3.Text = "Partidas TXT";
 			this.button3.UseVisualStyleBackColor = false;
-			// 
-			// button2
-			// 
-			this.button2.BackColor = System.Drawing.Color.Snow;
-			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.button2.Location = new System.Drawing.Point(9, 204);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(183, 35);
-			this.button2.TabIndex = 13;
-			this.button2.Text = "Partidas XML";
-			this.button2.UseVisualStyleBackColor = false;
-			// 
-			// btn_ExportarPartidasJSON
-			// 
-			this.btn_ExportarPartidasJSON.BackColor = System.Drawing.Color.Snow;
-			this.btn_ExportarPartidasJSON.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btn_ExportarPartidasJSON.Location = new System.Drawing.Point(9, 163);
-			this.btn_ExportarPartidasJSON.Name = "btn_ExportarPartidasJSON";
-			this.btn_ExportarPartidasJSON.Size = new System.Drawing.Size(183, 35);
-			this.btn_ExportarPartidasJSON.TabIndex = 11;
-			this.btn_ExportarPartidasJSON.Text = "Partidas JSON";
-			this.btn_ExportarPartidasJSON.UseVisualStyleBackColor = false;
-			// 
-			// btn_ExportarJugadoresTXT
-			// 
-			this.btn_ExportarJugadoresTXT.BackColor = System.Drawing.Color.Snow;
-			this.btn_ExportarJugadoresTXT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btn_ExportarJugadoresTXT.Location = new System.Drawing.Point(9, 122);
-			this.btn_ExportarJugadoresTXT.Name = "btn_ExportarJugadoresTXT";
-			this.btn_ExportarJugadoresTXT.Size = new System.Drawing.Size(183, 35);
-			this.btn_ExportarJugadoresTXT.TabIndex = 9;
-			this.btn_ExportarJugadoresTXT.Text = "Jugadores TXT";
-			this.btn_ExportarJugadoresTXT.UseVisualStyleBackColor = false;
+			this.button3.Click += new System.EventHandler(this.button3_Click);
 			// 
 			// btn_ExportarJugadoresXML
 			// 
-			this.btn_ExportarJugadoresXML.BackColor = System.Drawing.Color.Snow;
+			this.btn_ExportarJugadoresXML.BackColor = System.Drawing.Color.RosyBrown;
 			this.btn_ExportarJugadoresXML.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btn_ExportarJugadoresXML.Location = new System.Drawing.Point(9, 81);
 			this.btn_ExportarJugadoresXML.Name = "btn_ExportarJugadoresXML";
@@ -249,7 +222,7 @@
 			// 
 			this.brn_Salir.BackColor = System.Drawing.Color.Snow;
 			this.brn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.brn_Salir.Location = new System.Drawing.Point(747, 553);
+			this.brn_Salir.Location = new System.Drawing.Point(814, 685);
 			this.brn_Salir.Name = "brn_Salir";
 			this.brn_Salir.Size = new System.Drawing.Size(114, 39);
 			this.brn_Salir.TabIndex = 19;
@@ -260,54 +233,30 @@
 			// grp_ImportarBaseDeDatos
 			// 
 			this.grp_ImportarBaseDeDatos.Controls.Add(this.btm_JugadoresSQL);
-			this.grp_ImportarBaseDeDatos.Controls.Add(this.btn_ImportarPartidasXML);
-			this.grp_ImportarBaseDeDatos.Controls.Add(this.btn_ImportarPartidasJSON);
 			this.grp_ImportarBaseDeDatos.Controls.Add(this.btn_ImportarJugadoresXML);
 			this.grp_ImportarBaseDeDatos.Controls.Add(this.btn_ImportarJugadoresJSON);
-			this.grp_ImportarBaseDeDatos.Location = new System.Drawing.Point(230, 349);
+			this.grp_ImportarBaseDeDatos.Location = new System.Drawing.Point(217, 332);
 			this.grp_ImportarBaseDeDatos.Name = "grp_ImportarBaseDeDatos";
-			this.grp_ImportarBaseDeDatos.Size = new System.Drawing.Size(277, 389);
+			this.grp_ImportarBaseDeDatos.Size = new System.Drawing.Size(277, 187);
 			this.grp_ImportarBaseDeDatos.TabIndex = 10;
 			this.grp_ImportarBaseDeDatos.TabStop = false;
 			this.grp_ImportarBaseDeDatos.Text = "Importar Datos:";
 			// 
 			// btm_JugadoresSQL
 			// 
-			this.btm_JugadoresSQL.BackColor = System.Drawing.Color.Snow;
+			this.btm_JugadoresSQL.BackColor = System.Drawing.Color.RosyBrown;
 			this.btm_JugadoresSQL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btm_JugadoresSQL.Location = new System.Drawing.Point(6, 204);
+			this.btm_JugadoresSQL.Location = new System.Drawing.Point(6, 122);
 			this.btm_JugadoresSQL.Name = "btm_JugadoresSQL";
-			this.btm_JugadoresSQL.Size = new System.Drawing.Size(265, 76);
+			this.btm_JugadoresSQL.Size = new System.Drawing.Size(265, 54);
 			this.btm_JugadoresSQL.TabIndex = 18;
 			this.btm_JugadoresSQL.Text = "Jugadores de la Base de Datos";
 			this.btm_JugadoresSQL.UseVisualStyleBackColor = false;
 			this.btm_JugadoresSQL.Click += new System.EventHandler(this.btm_JugadoresSQL_Click);
 			// 
-			// btn_ImportarPartidasXML
-			// 
-			this.btn_ImportarPartidasXML.BackColor = System.Drawing.Color.Snow;
-			this.btn_ImportarPartidasXML.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btn_ImportarPartidasXML.Location = new System.Drawing.Point(6, 163);
-			this.btn_ImportarPartidasXML.Name = "btn_ImportarPartidasXML";
-			this.btn_ImportarPartidasXML.Size = new System.Drawing.Size(265, 35);
-			this.btn_ImportarPartidasXML.TabIndex = 14;
-			this.btn_ImportarPartidasXML.Text = "Partidas XML";
-			this.btn_ImportarPartidasXML.UseVisualStyleBackColor = false;
-			// 
-			// btn_ImportarPartidasJSON
-			// 
-			this.btn_ImportarPartidasJSON.BackColor = System.Drawing.Color.Snow;
-			this.btn_ImportarPartidasJSON.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btn_ImportarPartidasJSON.Location = new System.Drawing.Point(6, 122);
-			this.btn_ImportarPartidasJSON.Name = "btn_ImportarPartidasJSON";
-			this.btn_ImportarPartidasJSON.Size = new System.Drawing.Size(265, 35);
-			this.btn_ImportarPartidasJSON.TabIndex = 12;
-			this.btn_ImportarPartidasJSON.Text = "Partidas JSON";
-			this.btn_ImportarPartidasJSON.UseVisualStyleBackColor = false;
-			// 
 			// btn_ImportarJugadoresXML
 			// 
-			this.btn_ImportarJugadoresXML.BackColor = System.Drawing.Color.Snow;
+			this.btn_ImportarJugadoresXML.BackColor = System.Drawing.Color.RosyBrown;
 			this.btn_ImportarJugadoresXML.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btn_ImportarJugadoresXML.Location = new System.Drawing.Point(6, 81);
 			this.btn_ImportarJugadoresXML.Name = "btn_ImportarJugadoresXML";
@@ -319,7 +268,7 @@
 			// 
 			// btn_ImportarJugadoresJSON
 			// 
-			this.btn_ImportarJugadoresJSON.BackColor = System.Drawing.Color.Snow;
+			this.btn_ImportarJugadoresJSON.BackColor = System.Drawing.Color.RosyBrown;
 			this.btn_ImportarJugadoresJSON.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btn_ImportarJugadoresJSON.Location = new System.Drawing.Point(6, 40);
 			this.btn_ImportarJugadoresJSON.Name = "btn_ImportarJugadoresJSON";
@@ -329,25 +278,12 @@
 			this.btn_ImportarJugadoresJSON.UseVisualStyleBackColor = false;
 			this.btn_ImportarJugadoresJSON.Click += new System.EventHandler(this.btn_ImportarJugadoresJSON_Click);
 			// 
-			// btn_NuevoJugador
-			// 
-			this.btn_NuevoJugador.BackColor = System.Drawing.Color.Snow;
-			this.btn_NuevoJugador.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btn_NuevoJugador.Location = new System.Drawing.Point(513, 553);
-			this.btn_NuevoJugador.Name = "btn_NuevoJugador";
-			this.btn_NuevoJugador.Size = new System.Drawing.Size(228, 39);
-			this.btn_NuevoJugador.TabIndex = 4;
-			this.btn_NuevoJugador.Text = "Nuevo Jugador";
-			this.btn_NuevoJugador.UseVisualStyleBackColor = false;
-			this.btn_NuevoJugador.Click += new System.EventHandler(this.btn_NuevoJugador_Click);
-			// 
 			// FrmPantallaPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.LightSalmon;
-			this.ClientSize = new System.Drawing.Size(888, 736);
-			this.Controls.Add(this.btn_NuevoJugador);
+			this.ClientSize = new System.Drawing.Size(940, 736);
 			this.Controls.Add(this.grp_ImportarBaseDeDatos);
 			this.Controls.Add(this.brn_Salir);
 			this.Controls.Add(this.grp_ExportarDatos);
@@ -390,17 +326,12 @@
 		private Button btn_ExportarJugadoresJSON;
 		private GroupBox grp_ExportarDatos;
 		private Button button3;
-		private Button button2;
-		private Button btn_ExportarPartidasJSON;
-		private Button btn_ExportarJugadoresTXT;
 		private Button btn_ExportarJugadoresXML;
 		private Button brn_Salir;
 		private GroupBox grp_ImportarBaseDeDatos;
 		private Button btm_JugadoresSQL;
 		private Button btn_ImportarJugadoresJSON;
 		private Button btn_ImportarJugadoresXML;
-		private Button btn_ImportarPartidasXML;
-		private Button btn_ImportarPartidasJSON;
 		private Button btn_NuevoJugador;
 	}
 }

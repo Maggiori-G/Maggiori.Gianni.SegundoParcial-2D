@@ -29,7 +29,7 @@ namespace Vista {
 		private void ConfigurarDataGridPartidas() {
 			dgw_Partidas.Columns["JuegoJugadorUno"].Visible=false;
 			dgw_Partidas.Columns["JuegoJugadorDos"].Visible=false;
-			dgw_Partidas.Columns["InformePartida"].Visible=false;
+			dgw_Partidas.Columns["PartidaFinalizada"].Visible=false;
 		}
 
 		private void FrmPantallaPrincipal_FormClosed(object sender,FormClosedEventArgs e) {
@@ -37,8 +37,13 @@ namespace Vista {
 		}
 
 		private void ActualizarJugadoresBaseDeDatos() {
-			cmb_PrimerJugador.DataSource=JugadorDAO.GetJugadores();
-			cmb_SegundoJugador.DataSource=JugadorDAO.GetJugadores();
+			try {
+				cmb_PrimerJugador.DataSource=JugadorDAO.GetJugadores();
+				cmb_SegundoJugador.DataSource=JugadorDAO.GetJugadores();
+			}
+			catch (Exception ex) {
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		private void brn_Salir_Click(object sender,EventArgs e) {
@@ -72,7 +77,7 @@ namespace Vista {
 				serializadorJSON.Serializar(JugadorDAO.GetJugadores(),"JugadoresEnJson");
 			}
 			catch (Exception ex) {
-				MessageBox.Show(ex.ToString());
+				MessageBox.Show(ex.Message);
 			}
 		}
 
@@ -81,7 +86,7 @@ namespace Vista {
 				serializadorXML.Serializar(JugadorDAO.GetJugadores(),"JugadoresEnXML");
 			}
 			catch (Exception ex) {
-				MessageBox.Show(ex.ToString());
+				MessageBox.Show(ex.Message);
 			}
 		}
 
@@ -92,7 +97,7 @@ namespace Vista {
 				cmb_SegundoJugador.DataSource=Sistema.ListaJugadores;
 			}
 			catch (Exception ex) {
-				MessageBox.Show(ex.ToString());
+				MessageBox.Show(ex.Message);
 			}
 		}
 
@@ -103,9 +108,12 @@ namespace Vista {
 				cmb_SegundoJugador.DataSource=Sistema.ListaJugadores;
 			}
 			catch (Exception ex) {
-				MessageBox.Show(ex.ToString());
+				MessageBox.Show(ex.Message);
 			}
 		}
 
+		private void button3_Click(object sender,EventArgs e) {
+
+		}
 	}
 }

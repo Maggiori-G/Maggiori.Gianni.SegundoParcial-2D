@@ -38,7 +38,6 @@ namespace Entidades {
 			catch {
 				throw new Exception($"Error en el archivo {rutaCompleta}");
 			}
-			return false;
 		}
 
 		public static bool EscribirConBusqueda(string dato, string nombreDelArchivo) {

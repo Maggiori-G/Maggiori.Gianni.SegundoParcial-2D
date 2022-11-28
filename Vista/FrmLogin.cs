@@ -49,5 +49,13 @@ namespace Vista {
 			this.txt_Contraseña.Text="admin1234";
 		}
 
+		private void btn_NuevoUsuario_Click(object sender,EventArgs e) {
+			FrmNuevoUsuario nuevoUsuario = new FrmNuevoUsuario();
+			this.Hide();
+			nuevoUsuario.ShowDialog();
+			if(nuevoUsuario.DialogResult==DialogResult.OK) {
+				this.Show();
+			}
+		}
 	}
 }

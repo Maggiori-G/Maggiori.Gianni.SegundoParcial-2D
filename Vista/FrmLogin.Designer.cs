@@ -119,6 +119,7 @@
 			this.btn_NuevoUsuario.TabIndex = 4;
 			this.btn_NuevoUsuario.Text = "Registrarse";
 			this.btn_NuevoUsuario.UseVisualStyleBackColor = false;
+			this.btn_NuevoUsuario.Click += new System.EventHandler(this.btn_NuevoUsuario_Click);
 			// 
 			// btn_Salir
 			// 
