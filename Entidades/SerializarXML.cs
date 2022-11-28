@@ -7,21 +7,21 @@ using System.Xml.Serialization;
 using System.IO;
 
 namespace Entidades {
-	public class SerializarXML<T>: IManejadoraDeArchivos<T> {
+	public class SerializarXML<T>: IManejadoraDeArchivos<T>where T:class {
 		static string ruta;
 		static SerializarXML() {
-			ruta = Environment.CurrentDirectory;
-			ruta+=@"/Archivos-SerializacionXML";
+			ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+			ruta+=@"/Archivos-Serializacion";
 		}
-
-		public  bool Serializar(T dato, string archivo) {
+		
+		public bool Serializar(T dato, string archivo) {
 			string rutaCompleta = ruta + @"/"+archivo+".xml";
 			if(archivo is not null) {
 				if(!Directory.Exists(ruta)) {
 					Directory.CreateDirectory(ruta);
 				}
 				try {
-					using(StreamWriter sw = new StreamWriter(rutaCompleta)) {
+					using(StreamWriter sw = new StreamWriter(rutaCompleta,false,Encoding.UTF8)) {
 						XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
 						xmlSerializer.Serialize(sw, dato);
 						return true;

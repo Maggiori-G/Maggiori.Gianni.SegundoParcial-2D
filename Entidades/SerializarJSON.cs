@@ -7,11 +7,12 @@ using System.Text.Json.Serialization;
 using System.Text.Json;
 
 namespace Entidades {
-	public class SerializarJSON<T>where T: class, IManejadoraDeArchivos<T> {
+	public class SerializarJSON<T>: IManejadoraDeArchivos<T> where T: class {
 		static string ruta;
-		static SerializarJSON() {
-			ruta = Environment.CurrentDirectory;
-			ruta+=@"/Archivos-SerializacionJSON";
+
+		public SerializarJSON() {
+			ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+			ruta+=@"/Archivos-Serializacion";
 		}
 
 		public bool Serializar(T dato,string nombreDelArchivo) {
@@ -38,7 +39,7 @@ namespace Entidades {
 		}
 
 		public T Deserializar(string nombreDelArchivo) {
-			T? datos = default;
+			T? datos= default;
 			string rutaCompleta=ruta+@"/"+nombreDelArchivo+".json";
 			string archivoJSON=string.Empty;
 			if(!Directory.Exists(ruta)) {
@@ -47,11 +48,12 @@ namespace Entidades {
 			try {
 				archivoJSON = File.ReadAllText(rutaCompleta);
 				datos=JsonSerializer.Deserialize<T>(archivoJSON);
-				return datos!;
+				
 			}
 			catch {
 				throw new Exception("Error al leer el archivo");
 			}
+			return datos!;
 		}
 	}
 }

@@ -5,14 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Entidades {
+	public delegate void DelegadoInformarPartida(string tirada);
+	public delegate void DelegadoActualizarPuntos(int puntos);
+	public delegate void DelegadoActualizarJugadas(List<KeyValuePair<string,int>> tablaDeJugadas);
 	public class Juego{
 
 		Jugador jugador;
 		private Dictionary<string, int> jugadas;
+		public event DelegadoInformarPartida InformePartida;
+		public event DelegadoActualizarPuntos InformeActualizarPuntos;
+		public event DelegadoActualizarJugadas ActualizarTablaJugadas;
 
 		public Dictionary<string,int> Jugadas {
 			get => jugadas;
 			set => jugadas=value;
+		}
+
+		public Jugador Jugador {
+			get => jugador;
+			set => jugador=value;
 		}
 
 		public Juego(Jugador jugador) {
@@ -53,7 +64,9 @@ namespace Entidades {
 			int puntosTotales=0;
 			if(jugadas is not null) {
 				foreach(KeyValuePair<string,int> pair in jugadas) {
-					puntosTotales+=pair.Value;
+					if(pair.Value!=-1) {
+						puntosTotales+=pair.Value;
+					}
 				}
 			}
 			return puntosTotales;
@@ -247,5 +260,18 @@ namespace Entidades {
 			return sb.ToString();
 		}
 
+		public void JugarPartida() {
+			while(ChequearSiHayJugadasDisponibles()) {
+				Thread.Sleep(5000);
+				JugarTurno();
+				InformePartida?.Invoke(this.jugador.InformarTirada());
+				InformeActualizarPuntos?.Invoke(ContarPuntos());
+				ActualizarTablaJugadas?.Invoke(jugadas.ToList());
+			}
+		}
+
+		public void EmpezarPartida() {
+			Task jugarPartida=Task.Run(JugarPartida);
+		}
 	}
 }

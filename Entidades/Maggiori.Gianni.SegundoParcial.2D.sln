@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Entidades.cspr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vista", "..\Vista\Vista.csproj", "{C1ABACA5-E90B-4EA9-B0EF-8CD8379973E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestJuego", "..\TestJuego\TestJuego.csproj", "{E1F422DA-1FFC-4AFD-907E-540F8936CD93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestJuego", "..\TestJuego\TestJuego.csproj", "{E1F422DA-1FFC-4AFD-907E-540F8936CD93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

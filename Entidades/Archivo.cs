@@ -10,7 +10,7 @@ namespace Entidades {
 		static string ruta;
 		
 		static Archivo() {
-			ruta=Environment.CurrentDirectory;
+			ruta=Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 			ruta+=@"/Archivos";
 		}
 
@@ -23,6 +23,7 @@ namespace Entidades {
 			}
 			return null;
 		}
+
 		public static bool EscribirArchivo(string dato, string nombreDelArchivo) {
 			string rutaCompleta= ruta+@$"/{nombreDelArchivo}"+".txt";
 			try {
@@ -61,6 +62,7 @@ namespace Entidades {
 				return false;
 			}
 		}
+
 		public static string LeerArchivo(string nombreDelArchivo) {
 			string? rutaCompleta;
 			string datos = string.Empty;

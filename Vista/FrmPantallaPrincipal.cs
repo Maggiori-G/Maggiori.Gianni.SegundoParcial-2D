@@ -12,11 +12,24 @@ using System.Windows.Forms;
 namespace Vista {
 	public partial class FrmPantallaPrincipal:Form {
 		Usuario usuarioLogueado;
-
+		SerializarJSON<List<Jugador>> serializadorJSON;
+		SerializarXML<List<Jugador>> serializadorXML;
 		public FrmPantallaPrincipal(Usuario usuario) {
 			InitializeComponent();
 			usuarioLogueado = usuario;
 			this.Text="La Generala Fruta - Usuario: "+usuarioLogueado.NombreUsuario;
+			serializadorJSON = new SerializarJSON<List<Jugador>>();
+			serializadorXML = new SerializarXML<List<Jugador>>();
+		}
+
+		private void FrmPantallaPrincipal_Load(object sender,EventArgs e) {
+
+		}
+
+		private void ConfigurarDataGridPartidas() {
+			dgw_Partidas.Columns["JuegoJugadorUno"].Visible=false;
+			dgw_Partidas.Columns["JuegoJugadorDos"].Visible=false;
+			dgw_Partidas.Columns["InformePartida"].Visible=false;
 		}
 
 		private void FrmPantallaPrincipal_FormClosed(object sender,FormClosedEventArgs e) {
@@ -36,6 +49,9 @@ namespace Vista {
 			if(!Sistema.ValidarMesaConJugadoresIguales((Jugador)cmb_PrimerJugador.SelectedItem,(Jugador)cmb_SegundoJugador.SelectedItem)){
 				FrmMesa frmMesa = new FrmMesa((Jugador)cmb_PrimerJugador.SelectedItem, (Jugador)cmb_SegundoJugador.SelectedItem);
 				frmMesa.Show();
+				dgw_Partidas.DataSource=null;
+				dgw_Partidas.DataSource=Sistema.ListaPartidas;
+				ConfigurarDataGridPartidas();
 			}
 			else {
 				MessageBox.Show("No se puede crear una mesa con jugadores repetidos");
@@ -50,5 +66,46 @@ namespace Vista {
 			FrmNuevoJugador nuevoJugador = new FrmNuevoJugador();
 			nuevoJugador.Show();
 		}
+
+		private void btn_ExportarJugadoresJSON_Click(object sender,EventArgs e) {
+			try {
+				serializadorJSON.Serializar(JugadorDAO.GetJugadores(),"JugadoresEnJson");
+			}
+			catch (Exception ex) {
+				MessageBox.Show(ex.ToString());
+			}
+		}
+
+		private void btn_ExportarJugadoresXML_Click(object sender,EventArgs e) {
+			try {
+				serializadorXML.Serializar(JugadorDAO.GetJugadores(),"JugadoresEnXML");
+			}
+			catch (Exception ex) {
+				MessageBox.Show(ex.ToString());
+			}
+		}
+
+		private void btn_ImportarJugadoresJSON_Click(object sender,EventArgs e) {
+			try {
+				Sistema.ListaJugadores = serializadorJSON.Deserializar("JugadoresEnJson");
+				cmb_PrimerJugador.DataSource=Sistema.ListaJugadores;
+				cmb_SegundoJugador.DataSource=Sistema.ListaJugadores;
+			}
+			catch (Exception ex) {
+				MessageBox.Show(ex.ToString());
+			}
+		}
+
+		private void btn_ImportarJugadoresXML_Click(object sender,EventArgs e) {
+			try {
+				Sistema.ListaJugadores = serializadorXML.Deserializar("JugadoresEnXML");
+				cmb_PrimerJugador.DataSource=Sistema.ListaJugadores;
+				cmb_SegundoJugador.DataSource=Sistema.ListaJugadores;
+			}
+			catch (Exception ex) {
+				MessageBox.Show(ex.ToString());
+			}
+		}
+
 	}
 }

@@ -12,7 +12,9 @@ namespace Entidades {
 		private string? contraseña;
 		private string? email;
 
-		public Usuario() {}
+		public Usuario() {
+		
+		}
 
 		public Usuario(int id,string nombreCompleto,string nombreUsuario,string contraseña,string email) {
 			this.id=id;
@@ -42,6 +44,5 @@ namespace Entidades {
 			set => email=value;
 		}
 
-		
 	}
 }

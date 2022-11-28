@@ -9,12 +9,12 @@ namespace Entidades {
 
 		private static List<Usuario> listaUsuarios;
 		private static List<Jugador> listaJugadores;
-		private static List<Juego> listaPartidas;
+		private static List<Partida> listaPartidas;
 
 		static Sistema() {
 			listaUsuarios = new List<Usuario>();
 			listaJugadores = new List<Jugador>();
-			listaPartidas = new List<Juego>();
+			listaPartidas = new List<Partida>();
 		}
 
 		public static List<Usuario> ListaUsuarios {
@@ -27,7 +27,7 @@ namespace Entidades {
 			set => listaJugadores=value;
 		}
 
-		public static List<Juego> ListaPartidas {
+		public static List<Partida> ListaPartidas {
 			get => listaPartidas;
 			set => listaPartidas=value;
 		}
