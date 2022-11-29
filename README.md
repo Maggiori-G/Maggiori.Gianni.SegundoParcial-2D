@@ -182,7 +182,7 @@ El manejo de exceptions se encuentra en casi todo el programa tratadas de forma 
 Esta implementado en un proyecto dentro de la misma solucion llamado TestJuego. En este proyecto se encuentran las clases donde se realizaron los unit testing de las clases: Archivo, Juego/Generala, JugadorDAO, UsuarioDAO, SerializarJSON, SerializarXML. Todas las clases del proyecto TestJuego llevan el mismo nombre que la clase que testean con la palabra "Deberia" al final para identificarlas de mejor manera.
 Nota Importante: Algunos metodos estan testeados en conjunto por una cuestion de que trabajan entre si, no me parecio tan importante hacer un Unit-Test aparte para esos metodos (sobre todo los que no manejan logica del juego o realizan tareas muy complicadas).
 
-### Delegados, Task y Eventos y Programacion Multi-Hilos
+### Delegados, Task, Eventos y Programacion Multi-Hilos
 
 Estan implementados en variados lugares. Dentro del proyecto de TestJuego (UnitTesting) especificamente en las clases que testean la serializacion JSON y XML se usan tasks que vienen de las clases de serializacion para mostrar por consola algunos datos para mejorar la prueba de UnitTesting.
 En la clase Juego donde se desarrolla la partida y en la clase Partida que informa el ganador y genera el informe de la partida en conjunto con la clase Archivo.
