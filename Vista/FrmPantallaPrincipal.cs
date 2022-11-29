@@ -92,9 +92,10 @@ namespace Vista {
 
 		private void btn_ImportarJugadoresJSON_Click(object sender,EventArgs e) {
 			try {
+				Sistema.ListaJugadores.Clear();
 				Sistema.ListaJugadores = serializadorJSON.Deserializar("JugadoresEnJson");
-				cmb_PrimerJugador.DataSource=Sistema.ListaJugadores;
-				cmb_SegundoJugador.DataSource=Sistema.ListaJugadores;
+				cmb_PrimerJugador.DataSource=serializadorJSON.Deserializar("JugadoresEnJson");
+				cmb_SegundoJugador.DataSource=serializadorJSON.Deserializar("JugadoresEnJson");
 			}
 			catch (Exception ex) {
 				MessageBox.Show(ex.Message);
@@ -103,17 +104,19 @@ namespace Vista {
 
 		private void btn_ImportarJugadoresXML_Click(object sender,EventArgs e) {
 			try {
+				Sistema.ListaJugadores.Clear();
 				Sistema.ListaJugadores = serializadorXML.Deserializar("JugadoresEnXML");
-				cmb_PrimerJugador.DataSource=Sistema.ListaJugadores;
-				cmb_SegundoJugador.DataSource=Sistema.ListaJugadores;
+				cmb_PrimerJugador.DataSource=serializadorXML.Deserializar("JugadoresEnXML");
+				cmb_SegundoJugador.DataSource=serializadorXML.Deserializar("JugadoresEnXML");
 			}
 			catch (Exception ex) {
 				MessageBox.Show(ex.Message);
 			}
 		}
 
-		private void button3_Click(object sender,EventArgs e) {
-
+		private void btn_RankingVictorias_Click(object sender,EventArgs e) {
+			FrmRankingVictorias ranking = new FrmRankingVictorias();
+			ranking.Show();
 		}
 	}
 }

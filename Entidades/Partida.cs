@@ -57,22 +57,29 @@ namespace Entidades {
 		}
 
 		public void BuscarGanador() {
-			string nombreJugadorGanador = string.Empty;
-			while(true) {
-				if(!juegoJugadorUno.ChequearSiHayJugadasDisponibles() && !juegoJugadorDos.ChequearSiHayJugadasDisponibles()) {
-					nombreJugadorGanador="Empate";
-					if(juegoJugadorUno.ContarPuntos() > juegoJugadorDos.ContarPuntos()) {
-						JuegoJugadorUno.Jugador.CantidadDeVictorias++;
-						nombreJugadorGanador=juegoJugadorUno.Jugador.ToString();
+			try {
+				string nombreJugadorGanador = string.Empty;
+				while(true) {
+					if(!juegoJugadorUno.ChequearSiHayJugadasDisponibles() && !juegoJugadorDos.ChequearSiHayJugadasDisponibles()) {
+						nombreJugadorGanador="Empate";
+						if(juegoJugadorUno.ContarPuntos() > juegoJugadorDos.ContarPuntos()) {
+							JuegoJugadorUno.Jugador.CantidadDeVictorias++;
+							JugadorDAO.ActualizarVictoriasJugadorDAO(JuegoJugadorUno.Jugador);
+							nombreJugadorGanador=juegoJugadorUno.Jugador.ToString();
+						}
+						else if(juegoJugadorUno.ContarPuntos() < juegoJugadorDos.ContarPuntos()) {
+							JuegoJugadorDos.Jugador.CantidadDeVictorias++;
+							JugadorDAO.ActualizarVictoriasJugadorDAO(JuegoJugadorDos.Jugador);
+							nombreJugadorGanador = juegoJugadorDos.Jugador.ToString();
+						}
+						ganador?.Invoke(nombreJugadorGanador);
+						Archivo.EscribirArchivo(this.InformacionCompletaDeLaPartida(),"Registro de la partida "+this.Registro);
+						break;
 					}
-					else if(juegoJugadorUno.ContarPuntos() < juegoJugadorDos.ContarPuntos()) {
-						JuegoJugadorDos.Jugador.CantidadDeVictorias++;
-						nombreJugadorGanador = juegoJugadorDos.Jugador.ToString();
-					}
-					ganador?.Invoke(nombreJugadorGanador);
-					Archivo.EscribirArchivo(this.InformacionCompletaDeLaPartida(),"Registro de la partida "+this.Registro);
-					break;
 				}
+			}
+			catch {
+				throw new Exception("No se pudo jugar la partida");
 			}
 		}
 

@@ -9,6 +9,7 @@ using System.IO;
 namespace Entidades {
 	public class SerializarXML<T>: IManejadoraDeArchivos<T>where T:class {
 		static string ruta;
+		public event Action<string> Mensaje;
 		static SerializarXML() {
 			ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 			ruta+=@"/Archivos";
@@ -24,10 +25,12 @@ namespace Entidades {
 					using(StreamWriter sw = new StreamWriter(rutaCompleta,false,Encoding.UTF8)) {
 						XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
 						xmlSerializer.Serialize(sw, dato);
-						return true;
 					}
+					Mensaje?.Invoke("Archivo serializado correctamente");
+					return true;
 				}
 				catch {
+					Mensaje?.Invoke("Ocurrio un error al serializar el archivo");
 					throw new Exception("Error al escribir el archivo");
 				}
 			}
@@ -40,7 +43,7 @@ namespace Entidades {
 			string archivo = string.Empty;
 			T? datos=default;
 			if(archivo is not null) {
-				string rutaCompleta = ruta + @"/"+archivo+".xml";
+				string rutaCompleta = ruta + @"/"+nombreDelArchivo+".xml";
 				if(!Directory.Exists(ruta)) {
 					Directory.CreateDirectory(ruta);
 				}
@@ -49,8 +52,10 @@ namespace Entidades {
 						XmlSerializer xmlSerializer=new XmlSerializer(typeof(T));
 						datos = (T?)xmlSerializer.Deserialize(sw);
 					}
+					Mensaje?.Invoke("Archivo guardado correctamente");
 				}
 				catch {
+					Mensaje?.Invoke("Ocurrio un error al guardar un archivo");
 					throw new Exception("Error al leer el archivo");
 				}
 			}

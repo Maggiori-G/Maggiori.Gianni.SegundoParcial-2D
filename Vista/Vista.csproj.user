@@ -16,5 +16,8 @@
     <Compile Update="FrmPantallaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmRankingVictorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

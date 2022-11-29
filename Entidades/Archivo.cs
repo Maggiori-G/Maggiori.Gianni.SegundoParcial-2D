@@ -8,10 +8,15 @@ namespace Entidades {
 	public static class Archivo {
 
 		static string ruta;
-		
+		public static event Action<string> Mensaje;
 		static Archivo() {
 			ruta=Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 			ruta+=@"/Archivos";
+		}
+
+		public static string Ruta {
+			get => ruta;
+			set => ruta=value;
 		}
 
 		public static string? BuscarArchivo(string ruta, string nombreDelArchivo){
@@ -33,9 +38,11 @@ namespace Entidades {
 				using(StreamWriter sw = new StreamWriter(rutaCompleta)) {
 					sw.WriteLine(dato);
 				}
+				Mensaje?.Invoke("Archivo creado con exito");
 				return true;
 			}
 			catch {
+				Mensaje?.Invoke("Hubo un error creando el archivo");
 				throw new Exception($"Error en el archivo {rutaCompleta}");
 			}
 		}
@@ -73,14 +80,31 @@ namespace Entidades {
 						linea=sr.ReadToEnd();
 						datos+=linea;
 					}
+					Mensaje?.Invoke("Archivo leido correctamente");
 				}
 				else {
+					Mensaje?.Invoke("Hubo un error al leer el archivo");
 					throw new Exception("No se encontro el archivo");
 				}
 			}
 			return datos;
 		}
 
-		
+		public static bool BorrarArchivo(string nombreDelArchivo) {
+			try {
+				string rutaCompleta= ruta+@$"/{nombreDelArchivo}"+".txt";
+				File.Delete(rutaCompleta);
+				if(File.Exists(rutaCompleta)) {
+					Mensaje?.Invoke("No se pudo eliminar");
+				}
+				else {
+					Mensaje?.Invoke("Eliminado correctamente");
+				}
+				return true;
+			}
+			catch {
+				return false;
+			}
+		}
 	}
 }

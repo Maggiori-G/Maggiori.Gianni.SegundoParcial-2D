@@ -9,6 +9,11 @@ using System.Text.Json;
 namespace Entidades {
 	public class SerializarJSON<T>: IManejadoraDeArchivos<T> where T: class {
 		static string ruta;
+		public event Action<string> Mensaje;
+		public static string Ruta {
+			get => ruta;
+			set => ruta=value;
+		}
 
 		public SerializarJSON() {
 			ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -27,9 +32,12 @@ namespace Entidades {
 					opciones.WriteIndented=true;
 					objetoJSON=JsonSerializer.Serialize(dato, opciones);
 					File.WriteAllText(rutaCompleta, objetoJSON);
+					Mensaje?.Invoke("Datos serializados correctamente");
 					return true;
 				}
+
 				catch {
+					Mensaje?.Invoke("Ocurrio un error al serializar los datos");
 					throw new Exception("Error al leer el archivo");
 				}
 			}
@@ -55,5 +63,7 @@ namespace Entidades {
 			}
 			return datos!;
 		}
+
+
 	}
 }

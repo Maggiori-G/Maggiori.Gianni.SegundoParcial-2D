@@ -11,6 +11,10 @@ namespace Vista {
 			this.Close();
 		}
 		private void FrmLogin_Load(object sender,EventArgs e) {
+			
+		}
+
+		private void btn_Ingresar_Click(object sender,EventArgs e) {
 			try {
 				Sistema.ListaUsuarios=UsuarioDAO.GetUsuarios();
 			}
@@ -20,10 +24,6 @@ namespace Vista {
 					this.Close();
 				}
 			}
-			
-		}
-
-		private void btn_Ingresar_Click(object sender,EventArgs e) {
 			Usuario? usuario;
 			if(ControlVista.ValidarTextBox(this)) {
 				usuario=Sistema.VerificarUsuarioExistente(txt_NombreUsuario.Text.Trim(),txt_Contraseña.Text.Trim());
