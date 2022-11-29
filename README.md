@@ -29,12 +29,12 @@ La pantalla de registro contiene campos donde podras ingresar los datos necesari
 
 Una vez logueado el usuario que utilizará la aplicacion, se mostrara la pantalla principal.
 
-![image](https://user-images.githubusercontent.com/86836893/204464731-02cd0146-ab52-4016-85f0-f68f2c89f124.png)
+![image](https://user-images.githubusercontent.com/86836893/204554201-e8ea653f-7e3c-4031-b013-cc3cc6cb4aee.png)
 
 La pantalla principal esta dividida en secciones que hacen referencia a su area de responsabilidad.
-En la seccion de mesas de juego se mostraran todas las mesas que fueron creadas esten jugando o bien hayan finalizado la correspondiente partida, ni bien empezado el programa no se visualizara ninguna, ya que es el usuario quien determinara quien jugara contra quien. 
+En la seccion de mesas de juego se mostraran todas las mesas que fueron creadas esten jugando o bien hayan finalizado la correspondiente partida, o se hayan cancelado ni bien empezado el programa no se visualizara ninguna, ya que es el usuario quien determinara quien jugara contra quien. 
 
-![image](https://user-images.githubusercontent.com/86836893/204467056-39cd2889-752b-4e0a-9e47-c0270eada720.png)
+![image](https://user-images.githubusercontent.com/86836893/204554466-43f1e14b-1df9-4d46-950e-5458b11a5cc4.png)
 
 
 Lo primero que se deberia hacer antes de intentar crear una mesa de juego es importar los jugadores. 
@@ -42,9 +42,7 @@ Lo primero que se deberia hacer antes de intentar crear una mesa de juego es imp
 ![image](https://user-images.githubusercontent.com/86836893/204467241-4f7efdd2-783d-49bb-97c8-51920e5d447f.png)
 
 
-Se deja a eleccion del usuario de que forma quiere importar los jugadores de la aplicacion, puede importarlos directamente desde la base de datos lo cual es altamente recomendable si usted es un usuario que jamas uso la aplicacion y nunca generó archivos de tipo JSON o XML para persistir esos datos. 
-
-NOTA IMPORTANTE: Para poder importar los jugadores sin usar la base de datos previamente deberá al menos una vez (o la primera vez) cargarlos desde la base de datos y luego exportaros en formato JSON o XML, eso esta ubicado en donde dice Exportar Datos como se muestra a continuación.
+Se deja a eleccion del usuario de que forma quiere importar los jugadores de la aplicacion, puede importarlos directamente desde la base de datos lo cual es altamente recomendable si usted es un usuario que jamas uso la aplicacion y nunca generó archivos de tipo JSON o XML para persistir esos datos, si nunca genero archivos JSON o XML al cliquear en Exportar Datos en cualquiera de los dos diferentes tipos de datos que hay (JSON o XML) estos botones serializaran un archivo en el tipo elegido directo de la base de datos.
 
 
 ![image](https://user-images.githubusercontent.com/86836893/204473606-21562824-9e2d-452b-9d10-f54a14a677b0.png)
@@ -59,20 +57,33 @@ Luego de haber importado los jugadores desde la base de datos o desde archivos d
 Luego de haber seleccionado a ambos jugadores ya esta todo listo para darle click al boton crear mesa, lo cual mostrara la siguiente pantalla.
 
 
-![image](https://user-images.githubusercontent.com/86836893/204468383-8395d55c-d5e2-4c06-bd3e-01ed0f87b3ca.png)
+![image](https://user-images.githubusercontent.com/86836893/204555722-3fed0686-6da9-40e0-960c-97811b73c9b9.png)
 
 
 Esa Pantalla es donde se desarrolla la partida, esta totalmente automatizada desde las tiradas que se ejecutan con una task en un hilo secundario, como la actualizacion del puntaje, el informe del ganador y la realizacion de un informe de la partida. Al finalizar la partida, la pantalla se vera asi.
 
 
-![image](https://user-images.githubusercontent.com/86836893/204470670-57644265-3099-45f2-8619-382926d55148.png)
+![image](https://user-images.githubusercontent.com/86836893/204556272-0ddfa989-b9ad-4991-8181-22ddd7189008.png)
+
+El boton Cerrar Mesa, hara que la pantalla donde se esta desarrollando la partida se esconda pero siga ejecutando en segundo plano.
+
+![image](https://user-images.githubusercontent.com/86836893/204557878-8274132a-ec61-4589-8cf8-b47b54856e6e.png)
+
+
+El boton Cancelar Partida cancela la partida actual y todos los subprocesos mediante un cancelation token.
+
+
+![image](https://user-images.githubusercontent.com/86836893/204557941-760919cb-f5c7-4784-bd6e-d37da4bf5702.png)
 
 
 Al momento de crear la mesa, se actualizara el grid donde se muestran las partidas en la pantalla principal, donde se mostrara el codigo unico de la partida y los jugadores que formaron parte de esa partida. 
 Se vera de la siguiente forma.
 
 
-![image](https://user-images.githubusercontent.com/86836893/204471122-d764051d-fc66-41a6-8469-f51815faeaa7.png)
+![image](https://user-images.githubusercontent.com/86836893/204558109-cf20e40d-d5cd-411d-8cab-be838ff30774.png)
+
+
+En caso que se desee abrir una mesa que esta cerrada se deberá hacer click en el boton Abrir Mesa previamente habiendo seleccionado una partida de la lista de partidas que esta en el grid. El boton Abrir Mesa buscara automaticamente la mesa que usted desea abrir y la mostrara.
 
 
 La aplicacion esta diseñada para guardar un registro local de la partida en un archivo de texto que se guardara de forma prederminada en una carpeta llamada Archivos en el escritorio. Dicho informe se visualizara yendo a la carpeta mencionada anteriormente y abriendo el o los archivos de los cuales usted quiere ver el informe como se muestra a continuacion.
