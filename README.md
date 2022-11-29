@@ -195,13 +195,13 @@ Nota Importante: Algunos metodos estan testeados en conjunto por una cuestion de
 
 ### Delegados, Task, Eventos y Programacion Multi-Hilos
 
-Estan implementados en variados lugares. Dentro del proyecto de TestJuego (UnitTesting) especificamente en las clases que testean la serializacion JSON y XML se usan tasks que vienen de las clases de serializacion para mostrar por consola algunos datos para mejorar la prueba de UnitTesting.
+Estan implementados en variados lugares. Dentro del proyecto de TestJuego (UnitTesting) especificamente en las clases que testean la serializacion JSON y XML se usan eventos que vienen de las clases de serializacion para mostrar por consola algunos datos para mejorar la prueba de UnitTesting.
 En la clase Juego donde se desarrolla la partida y en la clase Partida que informa el ganador y genera el informe de la partida en conjunto con la clase Archivo.
 
 
 ## Autocritica
 
-Podria haber incluido la clase Archivo dentro de IManejadoraDeArchivos e implementar esos metodos. Creo que podria haber hecho algunos UnitTesting mas, con respecto a metodos que no manejan logica del juego o no realizan tareas demaciado complicadas o extensas. Tambien creo que deberia haber hecho el doble testeo para metodos que pueden tirar exceptions, algunos estan hechos pero otros no, no se que tan importante hubiera sido, ya que se por que arrojarian excepciones esos metodos, pero tal vez hubiera sido mejor hacerlos, pense que no llegaba con el tiempo.
+Podria haber incluido la clase Archivo dentro de IManejadoraDeArchivos e implementar esos metodos. Creo que podria haber hecho algunos UnitTesting mas, con respecto a metodos que no manejan logica del juego o no realizan tareas demasiado complicadas o extensas. Tambien creo que deberia haber hecho el doble testeo para metodos que pueden tirar exceptions, algunos estan hechos pero otros no, no se que tan importante hubiera sido, ya que se por que arrojarian excepciones esos metodos, pero tal vez hubiera sido mejor hacerlos, pense que no llegaba con el tiempo.
 
 
 
