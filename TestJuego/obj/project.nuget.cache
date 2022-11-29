@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IrQdxNbIzXdw5AhTc9IGyP3zkPKtTAJJftaMHUf+LRlu6mAt/k0naGIAOtDg46uuV1RdYmMY9wWRaxDAft3D4g==",
+  "dgSpecHash": "SPOt4Woym3DsQKsFNfF1acV6hLBjxWlnCPDW7SYuh+MAOXCo3ZWqNWEtSx4yjW+3mXuWtYVbwvLNn6mia/FpYA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tanii\\Desktop\\Maggiori.Gianni.SegundoParcial-2D\\TestJuego\\TestJuego.csproj",
+  "projectFilePath": "C:\\Users\\tanii\\Desktop\\Parcial\\Maggiori.Gianni.SegundoParcial-2D\\TestJuego\\TestJuego.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tanii\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\tanii\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",

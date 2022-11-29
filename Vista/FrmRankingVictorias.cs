@@ -21,7 +21,7 @@ namespace Vista {
 		}
 
 		private void btn_Salir_Click(object sender,EventArgs e) {
-			this.Close();
+			this.DialogResult=DialogResult.OK;
 		}
 	}
 }

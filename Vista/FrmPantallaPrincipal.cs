@@ -129,7 +129,7 @@ namespace Vista {
 
 		private void btn_RankingVictorias_Click(object sender,EventArgs e) {
 			FrmRankingVictorias ranking = new FrmRankingVictorias();
-			ranking.Show();
+			ranking.ShowDialog();
 		}
 
 		private void btn_AbrirMesa_Click(object sender,EventArgs e) {
