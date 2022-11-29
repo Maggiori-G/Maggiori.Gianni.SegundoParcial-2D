@@ -272,11 +272,11 @@ namespace Entidades {
 
 		public void JugarPartida(CancellationToken cancellation) {
 			while(ChequearSiHayJugadasDisponibles() && !cancellation.IsCancellationRequested) {
+				Thread.Sleep(2500);
 				JugarTurno();
 				InformePartida?.Invoke(this.jugador.InformarTirada());
 				InformeActualizarPuntos?.Invoke(ContarPuntos());
 				ActualizarTablaJugadas?.Invoke(jugadas.ToList());
-				Thread.Sleep(2500);
 			}
 		}
 
