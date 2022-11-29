@@ -19,5 +19,9 @@ namespace Vista {
 			dgw_RankingJugadores.DataSource=null;
 			dgw_RankingJugadores.DataSource=JugadorDAO.CrearRankingDeVictorias();
 		}
+
+		private void btn_Salir_Click(object sender,EventArgs e) {
+			this.Close();
+		}
 	}
 }

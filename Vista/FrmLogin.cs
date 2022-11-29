@@ -6,12 +6,12 @@ namespace Vista {
 			InitializeComponent();
 			
 		}
+		private void FrmLogin_Load(object sender,EventArgs e) {
+			
+		}
 
 		private void btn_Salir_Click(object sender,EventArgs e) {
 			this.Close();
-		}
-		private void FrmLogin_Load(object sender,EventArgs e) {
-			
 		}
 
 		private void btn_Ingresar_Click(object sender,EventArgs e) {

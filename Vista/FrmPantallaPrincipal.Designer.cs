@@ -211,9 +211,9 @@
 			// 
 			this.brn_Salir.BackColor = System.Drawing.Color.RosyBrown;
 			this.brn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.brn_Salir.Location = new System.Drawing.Point(788, 530);
+			this.brn_Salir.Location = new System.Drawing.Point(671, 530);
 			this.brn_Salir.Name = "brn_Salir";
-			this.brn_Salir.Size = new System.Drawing.Size(140, 44);
+			this.brn_Salir.Size = new System.Drawing.Size(257, 44);
 			this.brn_Salir.TabIndex = 19;
 			this.brn_Salir.Text = "Salir";
 			this.brn_Salir.UseVisualStyleBackColor = false;
@@ -226,7 +226,7 @@
 			this.grp_ImportarBaseDeDatos.Controls.Add(this.btn_ImportarJugadoresXML);
 			this.grp_ImportarBaseDeDatos.Location = new System.Drawing.Point(12, 471);
 			this.grp_ImportarBaseDeDatos.Name = "grp_ImportarBaseDeDatos";
-			this.grp_ImportarBaseDeDatos.Size = new System.Drawing.Size(770, 103);
+			this.grp_ImportarBaseDeDatos.Size = new System.Drawing.Size(653, 103);
 			this.grp_ImportarBaseDeDatos.TabIndex = 10;
 			this.grp_ImportarBaseDeDatos.TabStop = false;
 			this.grp_ImportarBaseDeDatos.Text = "Importar Datos:";
@@ -235,9 +235,9 @@
 			// 
 			this.btn_ImportarJugadoresJSON.BackColor = System.Drawing.Color.RosyBrown;
 			this.btn_ImportarJugadoresJSON.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btn_ImportarJugadoresJSON.Location = new System.Drawing.Point(548, 30);
+			this.btn_ImportarJugadoresJSON.Location = new System.Drawing.Point(464, 30);
 			this.btn_ImportarJugadoresJSON.Name = "btn_ImportarJugadoresJSON";
-			this.btn_ImportarJugadoresJSON.Size = new System.Drawing.Size(215, 62);
+			this.btn_ImportarJugadoresJSON.Size = new System.Drawing.Size(183, 65);
 			this.btn_ImportarJugadoresJSON.TabIndex = 6;
 			this.btn_ImportarJugadoresJSON.Text = "Jugadores JSON";
 			this.btn_ImportarJugadoresJSON.UseVisualStyleBackColor = false;
@@ -249,7 +249,7 @@
 			this.btm_JugadoresSQL.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btm_JugadoresSQL.Location = new System.Drawing.Point(6, 30);
 			this.btm_JugadoresSQL.Name = "btm_JugadoresSQL";
-			this.btm_JugadoresSQL.Size = new System.Drawing.Size(265, 65);
+			this.btm_JugadoresSQL.Size = new System.Drawing.Size(281, 65);
 			this.btm_JugadoresSQL.TabIndex = 18;
 			this.btm_JugadoresSQL.Text = "Jugadores de la Base de Datos";
 			this.btm_JugadoresSQL.UseVisualStyleBackColor = false;
@@ -259,9 +259,9 @@
 			// 
 			this.btn_ImportarJugadoresXML.BackColor = System.Drawing.Color.RosyBrown;
 			this.btn_ImportarJugadoresXML.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btn_ImportarJugadoresXML.Location = new System.Drawing.Point(277, 30);
+			this.btn_ImportarJugadoresXML.Location = new System.Drawing.Point(293, 30);
 			this.btn_ImportarJugadoresXML.Name = "btn_ImportarJugadoresXML";
-			this.btn_ImportarJugadoresXML.Size = new System.Drawing.Size(265, 62);
+			this.btn_ImportarJugadoresXML.Size = new System.Drawing.Size(165, 65);
 			this.btn_ImportarJugadoresXML.TabIndex = 8;
 			this.btn_ImportarJugadoresXML.Text = "Jugadores XML";
 			this.btn_ImportarJugadoresXML.UseVisualStyleBackColor = false;
@@ -271,9 +271,9 @@
 			// 
 			this.btn_RankingVictorias.BackColor = System.Drawing.Color.RosyBrown;
 			this.btn_RankingVictorias.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btn_RankingVictorias.Location = new System.Drawing.Point(789, 480);
+			this.btn_RankingVictorias.Location = new System.Drawing.Point(671, 480);
 			this.btn_RankingVictorias.Name = "btn_RankingVictorias";
-			this.btn_RankingVictorias.Size = new System.Drawing.Size(140, 44);
+			this.btn_RankingVictorias.Size = new System.Drawing.Size(258, 44);
 			this.btn_RankingVictorias.TabIndex = 20;
 			this.btn_RankingVictorias.Text = "Ranking de Victorias";
 			this.btn_RankingVictorias.UseVisualStyleBackColor = false;

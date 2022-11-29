@@ -63,12 +63,12 @@ namespace Entidades {
 					if(!juegoJugadorUno.ChequearSiHayJugadasDisponibles() && !juegoJugadorDos.ChequearSiHayJugadasDisponibles()) {
 						nombreJugadorGanador="Empate";
 						if(juegoJugadorUno.ContarPuntos() > juegoJugadorDos.ContarPuntos()) {
-							JuegoJugadorUno.Jugador.CantidadDeVictorias++;
+							JuegoJugadorUno.Jugador.Victorias++;
 							JugadorDAO.ActualizarVictoriasJugadorDAO(JuegoJugadorUno.Jugador);
 							nombreJugadorGanador=juegoJugadorUno.Jugador.ToString();
 						}
 						else if(juegoJugadorUno.ContarPuntos() < juegoJugadorDos.ContarPuntos()) {
-							JuegoJugadorDos.Jugador.CantidadDeVictorias++;
+							JuegoJugadorDos.Jugador.Victorias++;
 							JugadorDAO.ActualizarVictoriasJugadorDAO(JuegoJugadorDos.Jugador);
 							nombreJugadorGanador = juegoJugadorDos.Jugador.ToString();
 						}

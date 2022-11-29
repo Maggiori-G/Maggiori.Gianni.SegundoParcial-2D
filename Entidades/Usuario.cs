@@ -27,18 +27,22 @@ namespace Entidades {
 		public int Id {
 			get => id;
 		}
+
 		public string NombreCompleto {
 			get => nombreCompleto!;
 			set => this.nombreCompleto = value;
 		}
+
 		public string NombreUsuario {
 			get => nombreUsuario!;
 			set => nombreUsuario=value;
 		}
+
 		public string Contraseña {
 			get => contraseña!;
 			set => contraseña=value;
 		}
+
 		public string Email {
 			get => email!;
 			set => email=value;

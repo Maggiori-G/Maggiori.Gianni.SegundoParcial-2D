@@ -34,7 +34,7 @@ namespace Entidades {
 			set => this.nombreCompleto = value;
 		}
 
-		public int CantidadDeVictorias {
+		public int Victorias {
 			get => this.cantidadVictorias;
 			set => this.cantidadVictorias=value;
 		}

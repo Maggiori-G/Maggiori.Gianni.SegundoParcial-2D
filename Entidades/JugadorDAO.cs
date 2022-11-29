@@ -154,7 +154,7 @@ namespace Entidades {
 				sqlConnection.Open();
 				sqlCommand.CommandText=query;
 				sqlCommand.Parameters.Clear();
-				sqlCommand.Parameters.AddWithValue("@victorias",jugador.CantidadDeVictorias);
+				sqlCommand.Parameters.AddWithValue("@victorias",jugador.Victorias);
 				sqlCommand.Parameters.AddWithValue("@id",jugador.Id);
 				sqlCommand.ExecuteNonQuery();
 			}
