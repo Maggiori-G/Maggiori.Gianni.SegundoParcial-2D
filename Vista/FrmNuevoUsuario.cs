@@ -16,6 +16,7 @@ namespace Vista {
 		}
 
 		private void btn_Cancelar_Click(object sender,EventArgs e) {
+			this.DialogResult=DialogResult.OK;
 			this.Close();
 		}
 
@@ -33,6 +34,9 @@ namespace Vista {
 				catch(Exception ex) {
 					MessageBox.Show(ex.Message);
 				}
+			}
+			else {
+				MessageBox.Show("Debe ingresar todos los datos para registrarse");
 			}
 		}
 	}

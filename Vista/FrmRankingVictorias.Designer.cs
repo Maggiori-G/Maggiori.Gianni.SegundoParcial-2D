@@ -37,7 +37,9 @@
 			this.dgw_RankingJugadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgw_RankingJugadores.Location = new System.Drawing.Point(14, 55);
 			this.dgw_RankingJugadores.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+			this.dgw_RankingJugadores.MultiSelect = false;
 			this.dgw_RankingJugadores.Name = "dgw_RankingJugadores";
+			this.dgw_RankingJugadores.ReadOnly = true;
 			this.dgw_RankingJugadores.RowHeadersVisible = false;
 			this.dgw_RankingJugadores.RowTemplate.Height = 25;
 			this.dgw_RankingJugadores.Size = new System.Drawing.Size(451, 538);

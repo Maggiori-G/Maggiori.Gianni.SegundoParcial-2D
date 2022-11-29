@@ -14,12 +14,14 @@ namespace Vista {
 		Usuario usuarioLogueado;
 		SerializarJSON<List<Jugador>> serializadorJSON;
 		SerializarXML<List<Jugador>> serializadorXML;
+		private List<FrmMesa> listaDeMesas;
 		public FrmPantallaPrincipal(Usuario usuario) {
 			InitializeComponent();
 			usuarioLogueado = usuario;
 			this.Text="La Generala Fruta - Usuario: "+usuarioLogueado.NombreUsuario;
 			serializadorJSON = new SerializarJSON<List<Jugador>>();
 			serializadorXML = new SerializarXML<List<Jugador>>();
+			listaDeMesas = new List<FrmMesa>();
 		}
 
 		private void FrmPantallaPrincipal_Load(object sender,EventArgs e) {
@@ -30,6 +32,7 @@ namespace Vista {
 			dgw_Partidas.Columns["JuegoJugadorUno"].Visible=false;
 			dgw_Partidas.Columns["JuegoJugadorDos"].Visible=false;
 			dgw_Partidas.Columns["PartidaFinalizada"].Visible=false;
+
 		}
 
 		private void FrmPantallaPrincipal_FormClosed(object sender,FormClosedEventArgs e) {
@@ -51,15 +54,21 @@ namespace Vista {
 		}
 
 		private void btn_CrearMesa_Click(object sender,EventArgs e) {
-			if(!Sistema.ValidarMesaConJugadoresIguales((Jugador)cmb_PrimerJugador.SelectedItem,(Jugador)cmb_SegundoJugador.SelectedItem)){
-				FrmMesa frmMesa = new FrmMesa((Jugador)cmb_PrimerJugador.SelectedItem, (Jugador)cmb_SegundoJugador.SelectedItem);
-				frmMesa.Show();
-				dgw_Partidas.DataSource=null;
-				dgw_Partidas.DataSource=Sistema.ListaPartidas;
-				ConfigurarDataGridPartidas();
+			if(cmb_PrimerJugador.SelectedItem is not null || cmb_SegundoJugador.SelectedItem is not null) {
+				if(!Sistema.ValidarMesaConJugadoresIguales((Jugador)cmb_PrimerJugador.SelectedItem!,(Jugador)cmb_SegundoJugador.SelectedItem!)){
+					FrmMesa frmMesa = new FrmMesa((Jugador)cmb_PrimerJugador.SelectedItem!, (Jugador)cmb_SegundoJugador.SelectedItem!);
+					frmMesa.Show();
+					listaDeMesas.Add(frmMesa);
+					dgw_Partidas.DataSource=null;
+					dgw_Partidas.DataSource=Sistema.ListaPartidas;
+					ConfigurarDataGridPartidas();
+				}
+				else {
+					MessageBox.Show("No se puede crear una mesa con jugadores repetidos");
+				}
 			}
 			else {
-				MessageBox.Show("No se puede crear una mesa con jugadores repetidos");
+				MessageBox.Show("Debe seleccionar los dos jugadores para poder abrir una mesa de juego");
 			}
 		}
 
@@ -69,7 +78,11 @@ namespace Vista {
 
 		private void btn_NuevoJugador_Click(object sender,EventArgs e) {
 			FrmNuevoJugador nuevoJugador = new FrmNuevoJugador();
-			nuevoJugador.Show();
+			nuevoJugador.ShowDialog();
+			this.Hide();
+			if(nuevoJugador.DialogResult==DialogResult.OK) {
+				this.Show();
+			}
 		}
 
 		private void btn_ExportarJugadoresJSON_Click(object sender,EventArgs e) {
@@ -117,6 +130,21 @@ namespace Vista {
 		private void btn_RankingVictorias_Click(object sender,EventArgs e) {
 			FrmRankingVictorias ranking = new FrmRankingVictorias();
 			ranking.Show();
+		}
+
+		private void btn_AbrirMesa_Click(object sender,EventArgs e) {
+			if(Sistema.ListaPartidas.Count>0) {
+				Partida partidaAux;
+				partidaAux=(Partida)dgw_Partidas.CurrentRow.DataBoundItem;
+				foreach(FrmMesa item in this.listaDeMesas) {
+					if(item.Partida ==partidaAux.Registro) {
+						item.Show();
+					}
+				}
+			}
+			else {
+				MessageBox.Show("No hay partidas disponibles para mostrar");
+			}
 		}
 	}
 }

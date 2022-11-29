@@ -18,10 +18,16 @@ namespace Entidades {
 			juegoJugadorUno= new Juego(jugadorUno);
 			juegoJugadorDos= new Juego(jugadorDos);
 			this.registro=Sistema.GenerarCodigoAlfanumericoRandom();
+			partidaFinalizada=false;
 		}
 		
 		public Partida(Jugador jugadorUno,Jugador jugadorDos, Action<string> ganador):this(jugadorUno,jugadorDos) {
 			this.ganador=ganador;
+		}
+
+		public string Registro {
+			get => registro;
+			set => registro=value;
 		}
 
 		public Juego JuegoJugadorUno {
@@ -51,10 +57,6 @@ namespace Entidades {
 			set => partidaFinalizada=value;
 		}
 
-		public string Registro {
-			get => registro;
-			set => registro=value;
-		}
 
 		public void BuscarGanador() {
 			try {
@@ -72,6 +74,7 @@ namespace Entidades {
 							JugadorDAO.ActualizarVictoriasJugadorDAO(JuegoJugadorDos.Jugador);
 							nombreJugadorGanador = juegoJugadorDos.Jugador.ToString();
 						}
+						PartidaFinalizada=true;
 						ganador?.Invoke(nombreJugadorGanador);
 						Archivo.EscribirArchivo(this.InformacionCompletaDeLaPartida(),"Registro de la partida "+this.Registro);
 						break;

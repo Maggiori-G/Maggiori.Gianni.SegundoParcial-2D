@@ -68,10 +68,12 @@ namespace Entidades {
 					sqlCommand.Parameters.AddWithValue("@email",email);
 					return sqlCommand.ExecuteNonQuery();
 				}
-				return 0;
+				else {
+					throw new Exception("Error al crear el usuario en la base de datos");
+				}
 			}
 			catch {
-				return -1;
+				throw new Exception("Error al crear el usuario en la base de datos");
 			}
 			finally {
 				if(sqlCommand is not null && sqlConnection.State == System.Data.ConnectionState.Open) {

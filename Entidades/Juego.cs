@@ -15,6 +15,7 @@ namespace Entidades {
 		public event DelegadoInformarPartida InformePartida;
 		public event DelegadoActualizarPuntos InformeActualizarPuntos;
 		public event DelegadoActualizarJugadas ActualizarTablaJugadas;
+		CancellationTokenSource cancellation; 
 
 		public Dictionary<string,int> Jugadas {
 			get => jugadas;
@@ -25,10 +26,15 @@ namespace Entidades {
 			get => jugador;
 			set => jugador=value;
 		}
+		public CancellationTokenSource Cancellation {
+			get => cancellation;
+			set => cancellation=value;
+		}
 
 		public Juego(Jugador jugador) {
 			this.jugador=jugador;
 			jugadas=InicializarDiccionarioDeJugadas();
+			cancellation = new CancellationTokenSource();
 		}
 
 		private Dictionary<string, int> InicializarDiccionarioDeJugadas() 
@@ -260,19 +266,20 @@ namespace Entidades {
 			return sb.ToString();
 		}
 
-		public void JugarPartida() {
-			while(ChequearSiHayJugadasDisponibles()) {
-				Thread.Sleep(500);
+		public void EmpezarPartida() {
+			Task jugarPartida=Task.Run(() => JugarPartida(this.cancellation.Token));
+		}
+
+		public void JugarPartida(CancellationToken cancellation) {
+			while(ChequearSiHayJugadasDisponibles() && !cancellation.IsCancellationRequested) {
 				JugarTurno();
 				InformePartida?.Invoke(this.jugador.InformarTirada());
 				InformeActualizarPuntos?.Invoke(ContarPuntos());
 				ActualizarTablaJugadas?.Invoke(jugadas.ToList());
+				Thread.Sleep(2500);
 			}
 		}
 
-		public void EmpezarPartida() {
-			Task jugarPartida=Task.Run(JugarPartida);
-		}
 
 		public string MostrarInformacionJuego() {
 			StringBuilder sb = new StringBuilder();

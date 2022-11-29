@@ -17,8 +17,14 @@ namespace Vista {
 
 		private void btn_Aceptar_Click(object sender,EventArgs e) {
 			try {
-				JugadorDAO.EscribirNuevoJugador(txt_NuevoJugador.Text.Trim());
-				Sistema.ListaJugadores.Add(new Jugador(Sistema.ListaJugadores.Count+1,txt_NuevoJugador.Text.Trim(),0));
+				if(!string.IsNullOrEmpty(txt_NuevoJugador.Text)) {
+					JugadorDAO.EscribirNuevoJugador(txt_NuevoJugador.Text.Trim());
+					Sistema.ListaJugadores.Add(new Jugador(Sistema.ListaJugadores.Count+1,txt_NuevoJugador.Text.Trim(),0));
+					this.DialogResult=DialogResult.OK;
+				}
+				else {
+					MessageBox.Show("Debe ingresar el nombre del nuevo jugador");
+				}
 			}
 			catch (Exception ex) {
 				MessageBox.Show(ex.Message);
@@ -26,6 +32,7 @@ namespace Vista {
 		}
 
 		private void btn_Cancelar_Click(object sender,EventArgs e) {
+			this.DialogResult = DialogResult.OK;
 			this.Close();
 		}
 

@@ -16,6 +16,10 @@ namespace Vista {
 		Jugador? jugadorDos;
 		Partida? partida;
 
+		public string Partida {
+			get => partida.Registro!;
+		}
+
 		public FrmMesa(Jugador j1, Jugador j2) {
 			InitializeComponent();
 			jugadorUno = j1;
@@ -110,6 +114,18 @@ namespace Vista {
 			else {
 				lbl_Ganador.Text=ganador;
 			}
+		}
+
+		private void btn_CancelarPartida_Click(object sender,EventArgs e) {
+			partida!.JuegoJugadorUno.Cancellation.Cancel();
+			partida!.JuegoJugadorDos.Cancellation.Cancel();
+			if(!partida.PartidaFinalizada) {
+				lbl_Ganador.Text="Partida Cancelada";
+			}
+		}
+
+		private void button1_Click(object sender,EventArgs e) {
+			this.Hide();
 		}
 	}
 }

@@ -89,10 +89,12 @@
 			this.ClientSize = new System.Drawing.Size(353, 186);
 			this.Controls.Add(this.grp_NuevoUsuario);
 			this.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
 			this.MaximizeBox = false;
 			this.Name = "FrmNuevoJugador";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Nuevo Jugador";
 			this.grp_NuevoUsuario.ResumeLayout(false);
 			this.grp_NuevoUsuario.PerformLayout();

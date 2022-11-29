@@ -27,11 +27,11 @@
 			this.btn_CrearMesa = new System.Windows.Forms.Button();
 			this.dgw_Partidas = new System.Windows.Forms.DataGridView();
 			this.grp_Mesas = new System.Windows.Forms.GroupBox();
+			this.btn_AbrirMesa = new System.Windows.Forms.Button();
 			this.cmb_PrimerJugador = new System.Windows.Forms.ComboBox();
 			this.cmb_SegundoJugador = new System.Windows.Forms.ComboBox();
 			this.grp_NuevaMesa = new System.Windows.Forms.GroupBox();
 			this.btn_NuevoJugador = new System.Windows.Forms.Button();
-			this.btn_CerrarMesa = new System.Windows.Forms.Button();
 			this.lbl_JugadorDos = new System.Windows.Forms.Label();
 			this.lbl_JugadorUno = new System.Windows.Forms.Label();
 			this.lbl_Titulo = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@
 			this.btn_CrearMesa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btn_CrearMesa.Location = new System.Drawing.Point(6, 105);
 			this.btn_CrearMesa.Name = "btn_CrearMesa";
-			this.btn_CrearMesa.Size = new System.Drawing.Size(162, 56);
+			this.btn_CrearMesa.Size = new System.Drawing.Size(251, 56);
 			this.btn_CrearMesa.TabIndex = 2;
 			this.btn_CrearMesa.Text = "Crear Mesa";
 			this.btn_CrearMesa.UseVisualStyleBackColor = false;
@@ -69,23 +69,38 @@
 			this.dgw_Partidas.BackgroundColor = System.Drawing.Color.LightSalmon;
 			this.dgw_Partidas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
 			this.dgw_Partidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgw_Partidas.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dgw_Partidas.Location = new System.Drawing.Point(3, 27);
+			this.dgw_Partidas.Location = new System.Drawing.Point(6, 24);
+			this.dgw_Partidas.MultiSelect = false;
 			this.dgw_Partidas.Name = "dgw_Partidas";
+			this.dgw_Partidas.ReadOnly = true;
 			this.dgw_Partidas.RowHeadersVisible = false;
 			this.dgw_Partidas.RowTemplate.Height = 25;
-			this.dgw_Partidas.Size = new System.Drawing.Size(910, 150);
+			this.dgw_Partidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dgw_Partidas.Size = new System.Drawing.Size(669, 150);
 			this.dgw_Partidas.TabIndex = 1;
 			// 
 			// grp_Mesas
 			// 
+			this.grp_Mesas.Controls.Add(this.btn_AbrirMesa);
 			this.grp_Mesas.Controls.Add(this.dgw_Partidas);
 			this.grp_Mesas.Location = new System.Drawing.Point(12, 112);
 			this.grp_Mesas.Name = "grp_Mesas";
-			this.grp_Mesas.Size = new System.Drawing.Size(916, 180);
+			this.grp_Mesas.Size = new System.Drawing.Size(860, 180);
 			this.grp_Mesas.TabIndex = 2;
 			this.grp_Mesas.TabStop = false;
-			this.grp_Mesas.Text = "Mesas Activas";
+			this.grp_Mesas.Text = "Mesas De Juego";
+			// 
+			// btn_AbrirMesa
+			// 
+			this.btn_AbrirMesa.BackColor = System.Drawing.Color.RosyBrown;
+			this.btn_AbrirMesa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btn_AbrirMesa.Location = new System.Drawing.Point(681, 24);
+			this.btn_AbrirMesa.Name = "btn_AbrirMesa";
+			this.btn_AbrirMesa.Size = new System.Drawing.Size(171, 56);
+			this.btn_AbrirMesa.TabIndex = 5;
+			this.btn_AbrirMesa.Text = "Abrir Mesa ";
+			this.btn_AbrirMesa.UseVisualStyleBackColor = false;
+			this.btn_AbrirMesa.Click += new System.EventHandler(this.btn_AbrirMesa_Click);
 			// 
 			// cmb_PrimerJugador
 			// 
@@ -108,7 +123,6 @@
 			// grp_NuevaMesa
 			// 
 			this.grp_NuevaMesa.Controls.Add(this.btn_NuevoJugador);
-			this.grp_NuevaMesa.Controls.Add(this.btn_CerrarMesa);
 			this.grp_NuevaMesa.Controls.Add(this.lbl_JugadorDos);
 			this.grp_NuevaMesa.Controls.Add(this.lbl_JugadorUno);
 			this.grp_NuevaMesa.Controls.Add(this.cmb_SegundoJugador);
@@ -125,24 +139,13 @@
 			// 
 			this.btn_NuevoJugador.BackColor = System.Drawing.Color.RosyBrown;
 			this.btn_NuevoJugador.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btn_NuevoJugador.Location = new System.Drawing.Point(348, 105);
+			this.btn_NuevoJugador.Location = new System.Drawing.Point(263, 105);
 			this.btn_NuevoJugador.Name = "btn_NuevoJugador";
-			this.btn_NuevoJugador.Size = new System.Drawing.Size(166, 56);
+			this.btn_NuevoJugador.Size = new System.Drawing.Size(251, 56);
 			this.btn_NuevoJugador.TabIndex = 4;
 			this.btn_NuevoJugador.Text = "Nuevo Jugador";
 			this.btn_NuevoJugador.UseVisualStyleBackColor = false;
 			this.btn_NuevoJugador.Click += new System.EventHandler(this.btn_NuevoJugador_Click);
-			// 
-			// btn_CerrarMesa
-			// 
-			this.btn_CerrarMesa.BackColor = System.Drawing.Color.RosyBrown;
-			this.btn_CerrarMesa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btn_CerrarMesa.Location = new System.Drawing.Point(174, 105);
-			this.btn_CerrarMesa.Name = "btn_CerrarMesa";
-			this.btn_CerrarMesa.Size = new System.Drawing.Size(168, 56);
-			this.btn_CerrarMesa.TabIndex = 3;
-			this.btn_CerrarMesa.Text = "Cerrar Mesa";
-			this.btn_CerrarMesa.UseVisualStyleBackColor = false;
 			// 
 			// lbl_JugadorDos
 			// 
@@ -321,7 +324,6 @@
 		private ComboBox cmb_PrimerJugador;
 		private ComboBox cmb_SegundoJugador;
 		private GroupBox grp_NuevaMesa;
-		private Button btn_CerrarMesa;
 		private Label lbl_JugadorDos;
 		private Label lbl_JugadorUno;
 		private Label lbl_Titulo;
@@ -335,5 +337,6 @@
 		private Button btn_ImportarJugadoresXML;
 		private Button btn_NuevoJugador;
 		private Button btn_RankingVictorias;
+		private Button btn_AbrirMesa;
 	}
 }

@@ -41,6 +41,8 @@
 			this.lbl_Vs = new System.Windows.Forms.Label();
 			this.lbl_QuienGano = new System.Windows.Forms.Label();
 			this.lbl_Ganador = new System.Windows.Forms.Label();
+			this.btn_CancelarPartida = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
 			this.grp_JugadorUno.SuspendLayout();
 			this.grp_Tiradas1.SuspendLayout();
 			this.grp_J1.SuspendLayout();
@@ -235,12 +237,35 @@
 			this.lbl_Ganador.TabIndex = 8;
 			this.lbl_Ganador.Text = "And The Winner Is...";
 			// 
+			// btn_CancelarPartida
+			// 
+			this.btn_CancelarPartida.Location = new System.Drawing.Point(428, 298);
+			this.btn_CancelarPartida.Name = "btn_CancelarPartida";
+			this.btn_CancelarPartida.Size = new System.Drawing.Size(173, 68);
+			this.btn_CancelarPartida.TabIndex = 9;
+			this.btn_CancelarPartida.Text = "Cancelar Partida";
+			this.btn_CancelarPartida.UseVisualStyleBackColor = true;
+			this.btn_CancelarPartida.Click += new System.EventHandler(this.btn_CancelarPartida_Click);
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(428, 101);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(173, 68);
+			this.button1.TabIndex = 10;
+			this.button1.Text = "Cerrar Mesa";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
 			// FrmMesa
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.LightSalmon;
 			this.ClientSize = new System.Drawing.Size(1026, 516);
+			this.ControlBox = false;
+			this.Controls.Add(this.button1);
+			this.Controls.Add(this.btn_CancelarPartida);
 			this.Controls.Add(this.lbl_Ganador);
 			this.Controls.Add(this.lbl_QuienGano);
 			this.Controls.Add(this.lbl_Vs);
@@ -286,5 +311,7 @@
 		private RichTextBox rtb_RegistroJugadorDos;
 		private Label lbl_QuienGano;
 		private Label lbl_Ganador;
+		private Button btn_CancelarPartida;
+		private Button button1;
 	}
 }
